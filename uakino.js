@@ -1390,6 +1390,18 @@
             object = _object;
             select_title = object.movie.title;
             var url = embed + "engine/lazydev/dle_search/ajax.php?story=" + encodeURIComponent(cleanTitle(select_title));
+
+            var req = new XMLHttpRequest();
+            req.overrideMimeType("application/json");
+            req.open('GET', url, true);
+            req.onload  = function() {
+                var jsonResponse = JSON.parse(req.responseText);
+
+                console.log( jsonResponse );
+            }
+
+
+
             network["native"](url, function (json) {
 
                 console.log( json  );
