@@ -1394,7 +1394,7 @@
             network["native"](url, function (text) {
 
                 var str = text.replace(/\n/, '');
-                var links = object.movie.number_of_seasons ? str.match(/<a href="\/zxzxz\/(.*?)">(.*?)<\/a>/g) : str.match(/<a href="(.*?)\/uakino.club\/(.*?)" class="movie-title"[^>]+>(.*?)<\/a>/g);
+                var links = str.match(/<a href="(.*?)\/uakino.club\/(.*?)" class="movie-title"[^>]+>(.*?)<\/a>/g);
                 var relise = object.search_date || (object.movie.number_of_seasons ? object.movie.first_air_date : object.movie.release_date) || '0000';
                 var need_year = parseInt((relise + '').slice(0, 4));
                 var found_url = '';
