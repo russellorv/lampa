@@ -1389,7 +1389,7 @@
             if (this.wait_similars && sim) return getPage(sim[0].link);
             object = _object;
             select_title = object.movie.title;
-            var url = embed + "index.php?do=search&story=" + encodeURIComponent(cleanTitle(select_title));
+            var url = "https://agart.ua/get.php?search=" + encodeURIComponent(cleanTitle(select_title));
 
             network["native"](url, function (json) {
 
