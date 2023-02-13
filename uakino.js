@@ -1389,7 +1389,7 @@
             if (this.wait_similars && sim) return getPage(sim[0].link);
             object = _object;
             select_title = object.movie.title;
-            var url = embed + "engine/lazydev/dle_search/ajax.php?story=" + encodeURIComponent(cleanTitle(select_title));
+            var url = 'https://uakino.club/' + "engine/lazydev/dle_search/ajax.php?story=" + encodeURIComponent(cleanTitle(select_title));
             network["native"](url, function (str) {
                 str = str.replace(/\n/, '');
                 var links = object.movie.number_of_seasons ? str.match(/<a href="\/seriesss\/(.*?)">(.*?)<\/a>/g) : str.match(/<a href="\/filmy\/(.*?)">(.*?)<\/a>/g);
