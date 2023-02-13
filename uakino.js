@@ -1391,15 +1391,16 @@
             select_title = object.movie.title;
             var url = "https://agart.ua/get.php?search=" + encodeURIComponent(cleanTitle(select_title));
 
-            network["native"](url, function (json) {
+            network["native"](url, function (text) {
 
-                console.log( json  );
-
-                var str = json['content'].replace(/\n/, '');
-                var links = object.movie.number_of_seasons ? str.match(/<a href="\/seriesss\/(.*?)">(.*?)<\/a>/g) : str.match(/<a href="\/filmy\/(.*?)">(.*?)<\/a>/g);
+                var str = text.replace(/\n/, '');
+                var links = object.movie.number_of_seasons ? str.match(/<a href="\/seriesss\/(.*?)">(.*?)<\/a>/g) : str.match(/<a href="(.*?)\/uakino.club\/(.*?)" class="movie-title"[^>]+>(.*?)<\/a>/g);
                 var relise = object.search_date || (object.movie.number_of_seasons ? object.movie.first_air_date : object.movie.release_date) || '0000';
                 var need_year = parseInt((relise + '').slice(0, 4));
                 var found_url = '';
+
+                console.log( 'links' );
+                console.log( links );
 
                 if (links) {
                     var cards = [];
@@ -1440,7 +1441,7 @@
             }, function (a, c) {
                 component.empty(network.errorDecode(a, c));
             }, false, {
-                dataType: 'json'
+                dataType: 'text'
             });
         };
 
