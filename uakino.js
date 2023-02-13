@@ -1401,10 +1401,6 @@
                 var need_year = parseInt((relise + '').slice(0, 4));
                 var found_url = '';
 
-                console.log( str );
-                console.log( 'links' );
-                console.log( links );
-
                 if (links) {
                     var cards = [];
                     links.filter(function (l) {
@@ -1610,6 +1606,8 @@
                 var MOVIE_ID = str.match('var MOVIE_ID = ([^;]+);');
                 var IDENTIFIER = str.match('var IDENTIFIER = "([^"]+)"');
                 var PLAYER_CUID = str.match('var PLAYER_CUID = "([^"]+)"');
+
+                console.log( str );
 
                 if (MOVIE_ID && IDENTIFIER && PLAYER_CUID) {
                     select_id = MOVIE_ID[1];
