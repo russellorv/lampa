@@ -1391,6 +1391,9 @@
             select_title = object.movie.title;
             var url = embed + "engine/lazydev/dle_search/ajax.php?story=" + encodeURIComponent(cleanTitle(select_title));
             network["native"](url, function (json) {
+
+                console.log( json  );
+
                 var str = json['content'].replace(/\n/, '');
                 var links = object.movie.number_of_seasons ? str.match(/<a href="\/seriesss\/(.*?)">(.*?)<\/a>/g) : str.match(/<a href="\/filmy\/(.*?)">(.*?)<\/a>/g);
                 var relise = object.search_date || (object.movie.number_of_seasons ? object.movie.first_air_date : object.movie.release_date) || '0000';
