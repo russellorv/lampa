@@ -1367,7 +1367,7 @@
     function uakino(component, _object) {
         var network = new Lampa.Reguest();
         var extract = {};
-        var embed = component.proxy('uakino') + 'https://uakino.club/';
+        var embed = component.proxy('uakino') + ''; //https://uakino.club/
         var object = _object;
         var select_title = '';
         var select_id = '';
