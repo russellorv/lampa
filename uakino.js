@@ -1605,7 +1605,7 @@
         function getPage(url) {
             network.clear();
             network.timeout(1000 * 10);
-            network["native"](embed + url, function (str) {
+            network["native"]('https://agart.ua/get.php?film=' + url, function (str) {
                 str = str.replace(/\n/g, '');
                 var MOVIE_ID = str.match('var MOVIE_ID = ([^;]+);');
                 var IDENTIFIER = str.match('var IDENTIFIER = "([^"]+)"');
@@ -1623,7 +1623,7 @@
                     data_url = Lampa.Utils.addUrlComponent(data_url, "_=" + Date.now());
                     network.clear();
                     network.timeout(1000 * 10);
-                    network["native"](embed + data_url, function (user_data) {
+                    network["native"]('https://agart.ua/get.php?film=' + data_url, function (user_data) {
                         if (typeof user_data.vod_hash == "string") {
                             var file_url = "vod/" + select_id;
                             file_url = Lampa.Utils.addUrlComponent(file_url, "identifier=" + identifier);
@@ -1634,7 +1634,7 @@
                             file_url = Lampa.Utils.addUrlComponent(file_url, "_=" + Date.now());
                             network.clear();
                             network.timeout(1000 * 10);
-                            network["native"](embed + file_url, function (files) {
+                            network["native"]('https://agart.ua/get.php?film=' + file_url, function (files) {
                                 component.loading(false);
                                 extractData(files, str);
                                 filter();
