@@ -1389,18 +1389,7 @@
             if (this.wait_similars && sim) return getPage(sim[0].link);
             object = _object;
             select_title = object.movie.title;
-            var url = embed + "engine/lazydev/dle_search/ajax.php?story=" + encodeURIComponent(cleanTitle(select_title));
-
-            var req = new XMLHttpRequest();
-            req.overrideMimeType("application/json");
-            req.open('GET', url, true);
-            req.onload  = function() {
-                var jsonResponse = JSON.parse(req.responseText);
-
-                console.log( jsonResponse );
-            }
-
-
+            var url = embed + "index.php?do=search&story=" + encodeURIComponent(cleanTitle(select_title));
 
             network["native"](url, function (json) {
 
