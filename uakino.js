@@ -1707,6 +1707,9 @@
                     if (object.movie.id) Lampa.Favorite.add('history', object.movie, 100);
 
 
+                    console.log( 'element' )
+                    console.log( element )
+
                     getFile(element);
 
                     if (element.stream) {
