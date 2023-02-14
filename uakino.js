@@ -1643,6 +1643,12 @@
             network.timeout(1000 * 10);
             network["native"](element.file, function (text) {
 
+                var source = text.match('file:"(.*?)"');
+
+                if (source) {
+                    element.stream = source[1];
+                }
+
                 console.log( 'text' )
                 console.log( text )
 
@@ -1652,7 +1658,7 @@
                 dataType: 'text'
             });
 
-            element.stream = element.stream;
+
             element.qualitys = '';
             return {
                 file: element.stream,
