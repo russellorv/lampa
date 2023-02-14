@@ -1586,6 +1586,8 @@
 
                         console.log(  'news_id' );
                         console.log( select_id );
+                        console.log( 'find_series' );
+                        console.log( find_series );
 
                         component.loading(false);
                         var found = [];
@@ -1642,6 +1644,8 @@
                                     subtitle: false,
                                     info: ' '
                                 });
+                            } else {
+                                console.log( 'no find video' )
                             }
 
                         }
@@ -1653,7 +1657,7 @@
                             filter();
                             append(filtred());
 
-                        }
+                        } else component.emptyForQuery(select_title);
 
                     }, function (a, c) {
                         component.empty(network.errorDecode(a, c));
