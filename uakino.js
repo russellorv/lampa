@@ -1728,7 +1728,7 @@
                     console.log( element )
                     console.log( object.movie )
 
-                    network.clear();
+                    // network.clear();
                     // network.timeout(1000 * 10);
                     network["native"](element.file, function (text) {
                         var source = text.match('file:"(.*?)"');
@@ -3523,8 +3523,8 @@
             zh: '没有结果'
         },
         title_online: {
-            ru: 'Онлайн',
-            uk: 'Онлайн',
+            ru: 'Онлайн UA',
+            uk: 'Онлайн UA',
             en: 'Online',
             zh: '在线的'
         },
