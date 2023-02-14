@@ -1639,6 +1639,19 @@
                 first = '';
             var preferably = Lampa.Storage.get('video_quality_default', '1080');
 
+            network.clear();
+            network.timeout(1000 * 10);
+            network["native"](element.file, function (text) {
+
+                console.log( 'text' )
+                console.log( text )
+
+            }, function (a, c) {
+                component.empty(network.errorDecode(a, c));
+            }, false, {
+                dataType: 'text'
+            });
+
             element.stream = element.stream;
             element.qualitys = '';
             return {
