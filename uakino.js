@@ -1516,17 +1516,12 @@
                 var season = parseInt(extract[choice.season].comment);
                 playlist.forEach(function (serial) {
 
-                    console.log( 'serial' )
-                    console.log( serial )
-
-                    var quality = serial.file.match(/\[(\d+)p\]/g).pop().replace(/\[|\]/g, '');
-                    var voice = serial.file.match("{([^}]+)}");
                     filtred.push({
                         file: serial.file,
                         title: serial.comment,
-                        quality: quality,
+                        quality: '1080',
                         season: isNaN(season) ? 1 : season,
-                        info: voice ? ' / ' + voice[1] : '',
+                        info: serial.voice,
                         subtitles: parseSubs(serial.subtitle || '')
                     });
                 });
