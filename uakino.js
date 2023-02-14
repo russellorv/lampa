@@ -1622,6 +1622,7 @@
 
                             console.log( 'find_video' );
                             console.log( find_video );
+                            console.log( str );
 
                             if (find_video) {
                                 found.push({
