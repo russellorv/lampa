@@ -1605,36 +1605,24 @@
 
                 var MOVIE_ID = str.match('save_last_viewed\\((.*?)\\);');
 
-                console.log( 'MOVIE_ID' );
-                console.log( MOVIE_ID );
-
                 if (MOVIE_ID) {
                     select_id = MOVIE_ID[1];
                     select_id = select_id.replace("'", '');
                     select_id = select_id.replace("'", '');
-
-
-                    var identifier = '';
 
                     network.clear();
                     network.timeout(1000 * 10);
 
                     network["native"]('https://agart.ua/get.php?news_id=' + select_id, function (user_data) {
 
-
                         var find_series = user_data.match(/playlists-lists/g);
 
                         console.log(  'news_id' );
                         console.log( select_id );
-                        console.log( 'find_series' );
-                        console.log( find_series );
 
                         if (find_series) {
 
                             var series_links = user_data.match(/<li data-file[^>]+>(.*?)<\/li>/g);
-
-                            console.log( 'series_links' );
-                            console.log( series_links );
 
                             component.loading(false);
                             var found = [];
@@ -1683,16 +1671,9 @@
             var quality = {},
                 first = '';
             var preferably = Lampa.Storage.get('video_quality_default', '1080');
-            element.file.split(',').reverse().forEach(function (file) {
-                var q = file.match("\\[(\\d+)p");
 
-                if (q) {
-                    quality[q[1] + 'p'] = file.replace(/\[\d+p\]/, '').replace(/{([^}]+)}/, '').split(' or ')[0];
-                    if (!first || q[1] == preferably) first = quality[q[1] + 'p'];
-                }
-            });
-            element.stream = first;
-            element.qualitys = quality;
+            element.stream = element.stream;
+            element.qualitys = '';
             return {
                 file: first,
                 quality: quality
@@ -1724,6 +1705,8 @@
                 if (viewed.indexOf(hash_file) !== -1) item.append('<div class="torrent-item__viewed">' + Lampa.Template.get('icon_star', {}, true) + '</div>');
                 item.on('hover:enter', function () {
                     if (object.movie.id) Lampa.Favorite.add('history', object.movie, 100);
+
+
                     getFile(element);
 
                     if (element.stream) {
