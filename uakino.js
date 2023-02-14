@@ -1589,12 +1589,12 @@
                         console.log(  'news_id' );
                         console.log( select_id );
 
+                        component.loading(false);
+                        var found = [];
+
                         if (find_series) {
 
                             var series_links = user_data.match(/<li data-file[^>]+>(.*?)<\/li>/g);
-
-                            component.loading(false);
-                            var found = [];
 
                             series_links.forEach(function (l) {
                                 var link = $(l);
@@ -1616,12 +1616,31 @@
 
                             // found.reverse();
 
-                            extract = found;
+                        } else {
+                            var find_video = str.match(/<link itemprop="video" value="(.*?)">/);
+                            var find_video_title = str.match(/property="og:title" content="(.*?)"/);
 
-                            filter();
-                            append(filtred());
+                            if (find_video) {
+                                found.push({
+                                    file: find_video[1],
+                                    stream: find_video_title ? find_video_title[1] : 'UA',
+                                    title: text,
+                                    quality: '',
+                                    voice: 'UA',
+                                    subtitles: false,
+                                    subtitle: false,
+                                    info: ' '
+                                });
+                            }
+
 
                         }
+
+
+                        extract = found;
+
+                        filter();
+                        append(filtred());
 
                     }, function (a, c) {
                         component.empty(network.errorDecode(a, c));
