@@ -1527,10 +1527,9 @@
                 });
             } else {
                 extract.forEach(function (elem) {
-                    var quality = elem.file.match(/\[(\d+)p\]/g).pop().replace(/\[|\]/g, '');
-                    var voice = elem.file.match("{([^}]+)}");
-                    if (!elem.title) elem.title = elem.comment || (voice ? voice[1] : Lampa.Lang.translate('noname'));
-                    if (!elem.quality) elem.quality = quality;
+
+                    if (!elem.title) elem.title = elem.voice + ' ' + elem.title;
+                    if (!elem.quality) elem.quality = '';
                     if (!elem.info) elem.info = '';
                 });
                 filtred = extract;
@@ -1658,7 +1657,7 @@
                                 });
                             });
 
-                            found.reverse();
+                            // found.reverse();
 
                             extract = found;
 
