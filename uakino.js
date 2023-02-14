@@ -1620,6 +1620,9 @@
                             var find_video = str.match(/<link itemprop="video" value="(.*?)">/);
                             var find_video_title = str.match(/property="og:title" content="(.*?)"/);
 
+                            console.log( 'find_video' );
+                            console.log( find_video );
+
                             if (find_video) {
                                 found.push({
                                     file: find_video[1],
@@ -1633,14 +1636,16 @@
                                 });
                             }
 
-
                         }
 
+                        if (found) {
 
-                        extract = found;
+                            extract = found;
 
-                        filter();
-                        append(filtred());
+                            filter();
+                            append(filtred());
+
+                        }
 
                     }, function (a, c) {
                         component.empty(network.errorDecode(a, c));
