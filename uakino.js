@@ -1606,7 +1606,8 @@
                 str = str.replace(/\r\n/, '');
 
 
-                var MOVIE_ID = str.match("/save_last_viewed\\('([^\"]+)'\\);/U");
+                // var MOVIE_ID = str.match("/save_last_viewed\('([^\"]+)'\);/U");
+                var MOVIE_ID = str.match('save_last_viewed\\({(.*?)}\\);');
 
                 var PLAYER_CUID = str.match('var PLAYER_CUID = "([^"]+)"');
 
