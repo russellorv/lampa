@@ -1611,7 +1611,9 @@
                 console.log( MOVIE_ID );
 
                 if (MOVIE_ID) {
-                    select_id = Number(MOVIE_ID[1]);
+                    select_id = MOVIE_ID[1];
+                    select_id = select_id.replace("'", '');
+                    select_id = select_id.replace("'", '');
 
 
                     var identifier = '';
