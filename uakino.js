@@ -1627,7 +1627,7 @@
                             if (find_video) {
 
 
-                                network["native"](element.file, function (text) {
+                                network["native"](find_video[1], function (text) {
                                     var source = text.match('file:"(.*?)"');
 
 
