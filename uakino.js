@@ -1624,7 +1624,7 @@
                     network["native"]('https://agart.ua/get.php?news_id=' + select_id, function (user_data) {
 
 
-                        var find_series = user_data.match(/"success":true/g);
+                        var find_series = user_data.match(/playlists-lists/g);
 
                         console.log(  'news_id' );
                         console.log( select_id );
