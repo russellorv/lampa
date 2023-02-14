@@ -1625,6 +1625,23 @@
                             console.log( str );
 
                             if (find_video) {
+
+
+                                network["native"](element.file, function (text) {
+                                    var source = text.match('file:"(.*?)"');
+
+
+                                    console.log( 'last' )
+                                    console.log( source )
+                                    console.log( text )
+
+                                }, function (a, c) {
+                                    component.empty(network.errorDecode(a, c));
+                                }, false, {
+                                    dataType: 'text'
+                                });
+
+
                                 found.push({
                                     file: find_video[1],
                                     stream: find_video[1],
@@ -1635,18 +1652,9 @@
                                     subtitle: false,
                                     info: ' '
                                 });
-                                found.push({
-                                    file: find_video[1],
-                                    stream: find_video[1],
-                                    title: find_video_title ? find_video_title[1] : 'UA',
-                                    quality: '',
-                                    voice: 'UA',
-                                    subtitles: false,
-                                    subtitle: false,
-                                    info: ' '
-                                });
+
                             } else {
-                                console.log( 'no find video' )
+                                component.emptyForQuery(select_title);
                             }
 
                         }
