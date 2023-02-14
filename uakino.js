@@ -1605,22 +1605,17 @@
                 str = str.replace(/\n/g, '');
                 str = str.replace(/\r\n/, '');
 
-
-                // var MOVIE_ID = str.match("/save_last_viewed\('([^\"]+)'\);/U");
                 var MOVIE_ID = str.match('save_last_viewed\\((.*?)\\);');
-
-
-                var PLAYER_CUID = str.match('var PLAYER_CUID = "([^"]+)"');
 
                 console.log( 'MOVIE_ID' );
                 console.log( MOVIE_ID );
 
-                console.log( str );
+                if (MOVIE_ID) {
+                    select_id = Number(MOVIE_ID[1]);
 
-                if (MOVIE_ID && PLAYER_CUID) {
-                    select_id = MOVIE_ID[1];
-                    var identifier = IDENTIFIER[1];
-                    var player_cuid = PLAYER_CUID[1];
+
+                    var identifier = '';
+                    var player_cuid = '';
                     var data_url = "user_data";
                     data_url = Lampa.Utils.addUrlComponent(data_url, "page=movie");
                     data_url = Lampa.Utils.addUrlComponent(data_url, "movie_id=" + select_id);
@@ -1629,7 +1624,15 @@
                     data_url = Lampa.Utils.addUrlComponent(data_url, "_=" + Date.now());
                     network.clear();
                     network.timeout(1000 * 10);
-                    network["native"]('https://agart.ua/get.php?film=' + data_url, function (user_data) {
+
+
+                    network["native"]('https://agart.ua/get.php?news_id=' + select_id, function (user_data) {
+
+
+                        console.log(  'news_id' );
+                        console.log( user_data );
+
+
                         if (typeof user_data.vod_hash == "string") {
                             var file_url = "vod/" + select_id;
                             file_url = Lampa.Utils.addUrlComponent(file_url, "identifier=" + identifier);
