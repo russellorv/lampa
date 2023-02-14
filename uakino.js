@@ -1623,21 +1623,23 @@
 
                     network["native"]('https://agart.ua/get.php?news_id=' + select_id, function (user_data) {
 
+
+                        var find_series = user_data.match(/"success":true/g);
+
                         console.log(  'news_id' );
                         console.log( user_data );
+                        console.log( 'find_series' );
+                        console.log( find_series );
 
 
                         if (typeof user_data.vod_hash == "string") {
-                            var file_url = "vod/" + select_id;
-                            file_url = Lampa.Utils.addUrlComponent(file_url, "identifier=" + identifier);
-                            file_url = Lampa.Utils.addUrlComponent(file_url, "player_type=new");
-                            file_url = Lampa.Utils.addUrlComponent(file_url, "file_type=mp4");
-                            file_url = Lampa.Utils.addUrlComponent(file_url, "st=" + user_data.vod_hash);
-                            file_url = Lampa.Utils.addUrlComponent(file_url, "e=" + user_data.vod_time);
-                            file_url = Lampa.Utils.addUrlComponent(file_url, "_=" + Date.now());
+
+
+
+
                             network.clear();
                             network.timeout(1000 * 10);
-                            network["native"]('https://agart.ua/get.php?film=' + file_url, function (files) {
+                            network["native"]('https://agart.ua/get.php?film=' + '', function (files) {
                                 component.loading(false);
                                 extractData(files, str);
                                 filter();
