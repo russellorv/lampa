@@ -1515,6 +1515,10 @@
                 var playlist = extract[choice.season].playlist || extract;
                 var season = parseInt(extract[choice.season].comment);
                 playlist.forEach(function (serial) {
+
+                    console.log( 'serial' )
+                    console.log( serial )
+
                     var quality = serial.file.match(/\[(\d+)p\]/g).pop().replace(/\[|\]/g, '');
                     var voice = serial.file.match("{([^}]+)}");
                     filtred.push({
@@ -1647,14 +1651,9 @@
                                 var voice = link.attr('data-voice') || '';
                                 var text = link.text() || '';
 
-
-                                console.log( file  );
-                                console.log( voice  );
-                                console.log( text  );
-
-
                                 found.push({
                                     file: file,
+                                    stream: file,
                                     title: text,
                                     quality: '',
                                     voice: voice,
