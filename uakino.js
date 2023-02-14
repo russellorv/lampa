@@ -1747,16 +1747,16 @@
                             };
 
                             if (element.season) {
-                                items.forEach(function (elem) {
-                                    getFile(elem);
-                                    playlist.push({
-                                        title: elem.title,
-                                        url: elem.stream,
-                                        timeline: elem.timeline,
-                                        subtitles: elem.subtitles,
-                                        quality: elem.qualitys
-                                    });
-                                });
+                                // items.forEach(function (elem) {
+                                //     getFile(elem);
+                                //     playlist.push({
+                                //         title: elem.title,
+                                //         url: elem.stream,
+                                //         timeline: elem.timeline,
+                                //         subtitles: elem.subtitles,
+                                //         quality: elem.qualitys
+                                //     });
+                                // });
                             } else {
                                 // playlist.push(first);
                             }
