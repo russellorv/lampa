@@ -1518,6 +1518,7 @@
 
                     filtred.push({
                         file: serial.file,
+                        stream: serial.file,
                         title: serial.voice + ' ' + serial.title,
                         quality: '',
                         season: isNaN(season) ? 1 : season,
@@ -1561,40 +1562,6 @@
          * @param {String} str
          */
 
-
-        function extractData(str, page) {
-            var vod = str.split('|');
-
-            if (vod[0] == 'file') {
-                var file = str.match("file\\|([^\\|]+)\\|");
-                var found = [];
-                var subtiles = parseSubs(vod[2]);
-                var quality_type = page.replace(/\n/g, '').replace(/ /g, '').match(/<div class="fi-desc">(\w+)<\/div>/i);
-
-                if (file) {
-                    str = file[1].replace(/\n/g, '');
-                    str.split(',').forEach(function (el) {
-                        var quality = el.match("\\[(\\d+)p");
-                        el.split(';').forEach(function (el2) {
-                            var voice = el2.match("{([^}]+)}");
-                            var links = voice ? el2.match("}([^;]+)") : el2.match("\\]([^;]+)");
-                            found.push({
-                                file: file[1],
-                                title: object.movie.title,
-                                quality: quality[1] + 'p' + (quality_type ? ' - ' + quality_type[1] : ''),
-                                voice: voice ? voice[1] : '',
-                                stream: links[1].split(' or ')[0],
-                                subtitles: subtiles,
-                                info: ' '
-                            });
-                        });
-                    });
-                    found.reverse();
-                }
-
-                extract = found;
-            } else if (vod[0] == 'pl') extract = Lampa.Arrays.decodeJson(vod[1], []);else component.emptyForQuery(select_title);
-        }
 
         function getPage(url) {
             network.clear();
@@ -1675,7 +1642,7 @@
             element.stream = element.stream;
             element.qualitys = '';
             return {
-                file: first,
+                file: element.stream,
                 quality: quality
             };
         }
