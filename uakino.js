@@ -1518,8 +1518,8 @@
 
                     filtred.push({
                         file: serial.file,
-                        title: serial.comment,
-                        quality: '1080',
+                        title: serial.voice + ' ' + serial.title,
+                        quality: '',
                         season: isNaN(season) ? 1 : season,
                         info: serial.voice,
                         subtitles: parseSubs(serial.subtitle || '')
@@ -1653,6 +1653,7 @@
                                     quality: '',
                                     voice: voice,
                                     subtitles: false,
+                                    subtitle: false,
                                     info: ' '
                                 });
                             });
