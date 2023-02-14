@@ -1627,13 +1627,17 @@
                         var find_series = user_data.match(/"success":true/g);
 
                         console.log(  'news_id' );
-                        console.log( user_data );
+                        console.log( select_id );
                         console.log( 'find_series' );
                         console.log( find_series );
 
                         if (find_series) {
 
                             var series_links = user_data.match(/<li data-file[^>]+>(.*?)<\/li>/g);
+
+                            console.log( 'series_links' );
+                            console.log( series_links );
+
 
                             series_links.filter(function (l) {
                                 var link = $(l);
