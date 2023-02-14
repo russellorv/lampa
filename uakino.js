@@ -1652,6 +1652,19 @@
 
                             });
 
+                            series_links.forEach(function (l) {
+                                var link = $(l);
+                                var file = link.attr('data-file') || '';
+                                var voice = link.attr('data-voice') || '';
+                                var text = link.text() || '';
+
+
+                                console.log( file  );
+                                console.log( voice  );
+                                console.log( text  );
+
+                            });
+
                         }
 
 
