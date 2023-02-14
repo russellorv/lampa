@@ -1617,19 +1617,11 @@
 
 
                     var identifier = '';
-                    var player_cuid = '';
-                    var data_url = "user_data";
-                    data_url = Lampa.Utils.addUrlComponent(data_url, "page=movie");
-                    data_url = Lampa.Utils.addUrlComponent(data_url, "movie_id=" + select_id);
-                    data_url = Lampa.Utils.addUrlComponent(data_url, "cuid=" + player_cuid);
-                    data_url = Lampa.Utils.addUrlComponent(data_url, "device=DESKTOP");
-                    data_url = Lampa.Utils.addUrlComponent(data_url, "_=" + Date.now());
+
                     network.clear();
                     network.timeout(1000 * 10);
 
-
                     network["native"]('https://agart.ua/get.php?news_id=' + select_id, function (user_data) {
-
 
                         console.log(  'news_id' );
                         console.log( user_data );
@@ -1658,6 +1650,8 @@
                         } else component.empty(Lampa.Lang.translate('torrent_parser_no_hash'));
                     }, function (a, c) {
                         component.empty(network.errorDecode(a, c));
+                    }, false, {
+                        dataType: 'text'
                     });
                 } else component.emptyForQuery(select_title);
             }, function (a, c) {
