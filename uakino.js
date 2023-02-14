@@ -1642,16 +1642,10 @@
             network.clear();
             network.timeout(1000 * 10);
             network["native"](element.file, function (text) {
-
                 var source = text.match('file:"(.*?)"');
-
                 if (source) {
                     element.stream = source[1];
                 }
-
-                console.log( 'text' )
-                console.log( text )
-
             }, function (a, c) {
                 component.empty(network.errorDecode(a, c));
             }, false, {
@@ -1696,43 +1690,61 @@
                     console.log( 'element' )
                     console.log( element )
 
-                    getFile(element);
+                    network.clear();
+                    network.timeout(1000 * 10);
+                    network["native"](element.file, function (text) {
+                        var source = text.match('file:"(.*?)"');
+                        if (source) {
+                            element.stream = source[1];
+                        }
 
-                    if (element.stream) {
-                        var playlist = [];
-                        var first = {
-                            url: element.stream,
-                            timeline: view,
-                            title: element.season ? element.title : element.voice ? object.movie.title + ' / ' + element.title : element.title,
-                            subtitles: element.subtitles,
-                            quality: element.qualitys
-                        };
+                        if (element.stream) {
+                            var playlist = [];
+                            var first = {
+                                url: element.stream,
+                                timeline: view,
+                                title: element.season ? element.title : element.voice ? object.movie.title + ' / ' + element.title : element.title,
+                                subtitles: element.subtitles,
+                                quality: element.qualitys
+                            };
 
-                        if (element.season) {
-                            items.forEach(function (elem) {
-                                getFile(elem);
-                                playlist.push({
-                                    title: elem.title,
-                                    url: elem.stream,
-                                    timeline: elem.timeline,
-                                    subtitles: elem.subtitles,
-                                    quality: elem.qualitys
+                            if (element.season) {
+                                items.forEach(function (elem) {
+                                    getFile(elem);
+                                    playlist.push({
+                                        title: elem.title,
+                                        url: elem.stream,
+                                        timeline: elem.timeline,
+                                        subtitles: elem.subtitles,
+                                        quality: elem.qualitys
+                                    });
                                 });
-                            });
-                        } else {
-                            playlist.push(first);
-                        }
+                            } else {
+                                playlist.push(first);
+                            }
 
-                        if (playlist.length > 1) first.playlist = playlist;
-                        Lampa.Player.play(first);
-                        Lampa.Player.playlist(playlist);
+                            if (playlist.length > 1) first.playlist = playlist;
+                            Lampa.Player.play(first);
+                            Lampa.Player.playlist(playlist);
 
-                        if (viewed.indexOf(hash_file) == -1) {
-                            viewed.push(hash_file);
-                            item.append('<div class="torrent-item__viewed">' + Lampa.Template.get('icon_star', {}, true) + '</div>');
-                            Lampa.Storage.set('online_view', viewed);
-                        }
-                    } else Lampa.Noty.show(Lampa.Lang.translate('online_nolink'));
+                            if (viewed.indexOf(hash_file) == -1) {
+                                viewed.push(hash_file);
+                                item.append('<div class="torrent-item__viewed">' + Lampa.Template.get('icon_star', {}, true) + '</div>');
+                                Lampa.Storage.set('online_view', viewed);
+                            }
+
+
+
+                        } else Lampa.Noty.show(Lampa.Lang.translate('online_nolink'));
+
+
+                    }, function (a, c) {
+                        component.empty(network.errorDecode(a, c));
+                    }, false, {
+                        dataType: 'text'
+                    });
+
+
                 });
                 component.append(item);
                 component.contextmenu({
