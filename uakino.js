@@ -1638,19 +1638,8 @@
                             console.log( 'series_links' );
                             console.log( series_links );
 
-
-                            // series_links.filter(function (l) {
-                            //     var link = $(l);
-                            //     var file = link.attr('data-file') || '';
-                            //     var voice = link.attr('data-voice') || '';
-                            //     var text = link.text() || '';
-                            //
-                            //
-                            //     console.log( file  );
-                            //     console.log( voice  );
-                            //     console.log( text  );
-                            //
-                            // });
+                            component.loading(false);
+                            var found = [];
 
                             series_links.forEach(function (l) {
                                 var link = $(l);
@@ -1663,29 +1652,26 @@
                                 console.log( voice  );
                                 console.log( text  );
 
+
+                                found.push({
+                                    file: file,
+                                    title: text,
+                                    quality: '',
+                                    voice: voice,
+                                    subtitles: false,
+                                    info: ' '
+                                });
                             });
+
+                            found.reverse();
+
+                            extract = found;
+
+                            filter();
+                            append(filtred());
 
                         }
 
-
-                        if (typeof user_data.vod_hash == "string") {
-
-
-
-
-                            network.clear();
-                            network.timeout(1000 * 10);
-                            network["native"]('https://agart.ua/get.php?film=' + '', function (files) {
-                                component.loading(false);
-                                extractData(files, str);
-                                filter();
-                                append(filtred());
-                            }, function (a, c) {
-                                component.empty(network.errorDecode(a, c));
-                            }, false, {
-                                dataType: 'text'
-                            });
-                        } else component.empty(Lampa.Lang.translate('torrent_parser_no_hash'));
                     }, function (a, c) {
                         component.empty(network.errorDecode(a, c));
                     }, false, {
