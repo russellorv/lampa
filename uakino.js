@@ -1631,6 +1631,25 @@
                         console.log( 'find_series' );
                         console.log( find_series );
 
+                        if (find_series) {
+
+                            var series_links = user_data.match(/<li data-file[^>]+>(.*?)<\/li>/g);
+
+                            series_links.filter(function (l) {
+                                var link = $(l);
+                                var file = link.attr('data-file') || '';
+                                var voice = link.attr('data-voice') || '';
+                                var text = link.text() || '';
+
+
+                                console.log( file  );
+                                console.log( voice  );
+                                console.log( text  );
+
+                            });
+
+                        }
+
 
                         if (typeof user_data.vod_hash == "string") {
 
