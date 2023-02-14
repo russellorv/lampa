@@ -1634,6 +1634,16 @@
                                     subtitle: false,
                                     info: ' '
                                 });
+                                found.push({
+                                    file: find_video[1],
+                                    stream: find_video[1],
+                                    title: find_video_title ? find_video_title[1] : 'UA',
+                                    quality: '',
+                                    voice: 'UA',
+                                    subtitles: false,
+                                    subtitle: false,
+                                    info: ' '
+                                });
                             }
 
                         }
