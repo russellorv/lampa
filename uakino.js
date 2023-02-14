@@ -1758,12 +1758,12 @@
                                     });
                                 });
                             } else {
-                                playlist.push(first);
+                                // playlist.push(first);
                             }
 
                             if (playlist.length > 1) first.playlist = playlist;
                             Lampa.Player.play(first);
-                            Lampa.Player.playlist(playlist);
+                            // Lampa.Player.playlist(playlist);
 
                             if (viewed.indexOf(hash_file) == -1) {
                                 viewed.push(hash_file);
