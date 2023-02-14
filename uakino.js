@@ -1603,13 +1603,19 @@
             network.timeout(1000 * 10);
             network["native"]('https://agart.ua/get.php?film=' + url, function (str) {
                 str = str.replace(/\n/g, '');
-                var MOVIE_ID = str.match('var MOVIE_ID = ([^;]+);');
-                var IDENTIFIER = str.match('var IDENTIFIER = "([^"]+)"');
+                str = str.replace(/\r\n/, '');
+
+
+                var MOVIE_ID = str.match('data-news="([^"]+)"');
+
                 var PLAYER_CUID = str.match('var PLAYER_CUID = "([^"]+)"');
+
+                console.log( 'MOVIE_ID' );
+                console.log( MOVIE_ID );
 
                 console.log( str );
 
-                if (MOVIE_ID && IDENTIFIER && PLAYER_CUID) {
+                if (MOVIE_ID && PLAYER_CUID) {
                     select_id = MOVIE_ID[1];
                     var identifier = IDENTIFIER[1];
                     var player_cuid = PLAYER_CUID[1];
