@@ -1673,8 +1673,8 @@
                 first = '';
             var preferably = Lampa.Storage.get('video_quality_default', '1080');
 
-            network.clear();
-            network.timeout(1000 * 10);
+            // network.clear();
+            // network.timeout(1000 * 10);
             network["native"](element.file, function (text) {
                 var source = text.match('file:"(.*?)"');
                 if (source) {
@@ -1729,7 +1729,7 @@
                     console.log( object.movie )
 
                     network.clear();
-                    network.timeout(1000 * 10);
+                    // network.timeout(1000 * 10);
                     network["native"](element.file, function (text) {
                         var source = text.match('file:"(.*?)"');
                         if (source) {
