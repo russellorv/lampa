@@ -1570,6 +1570,8 @@
                 str = str.replace(/\n/g, '');
                 str = str.replace(/\r\n/, '');
 
+                console.log( str );
+
                 var MOVIE_ID = str.match('save_last_viewed\\((.*?)\\);');
 
                 if (MOVIE_ID) {
@@ -1646,6 +1648,13 @@
                 if (source) {
                     element.stream = source[1];
                 }
+
+                element.qualitys = '';
+                return {
+                    file: element.stream,
+                    quality: quality
+                };
+
             }, function (a, c) {
                 component.empty(network.errorDecode(a, c));
             }, false, {
@@ -1653,11 +1662,7 @@
             });
 
 
-            element.qualitys = '';
-            return {
-                file: element.stream,
-                quality: quality
-            };
+
         }
         /**
          * Показать файлы
