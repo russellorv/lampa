@@ -1645,6 +1645,7 @@
                                     console.log( text.match("/file:'\[(.*?)\]',/gm") )
                                     console.log( text.match("/file:\[(.*?)\]',/gm") )
                                     console.log( text.match("/file:(.*?)]',/gm") )
+                                    console.log( text.match("/file:(.*?)forbidden_quality/s") )
                                     console.log( JSON.parse(text) )
 
                                 }, function (a, c) {
