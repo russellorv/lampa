@@ -1580,6 +1580,12 @@
                     network.clear();
                     network.timeout(1000 * 10);
 
+
+                    var find_video = str.match(/<link itemprop="video" value="(.*?)">/);
+                    var find_video_title = str.match(/property="og:title" content="(.*?)"/);
+
+
+
                     network["native"]('https://agart.ua/get.php?news_id=' + select_id, function (user_data) {
 
                         var find_series = user_data.match(/playlists-lists/g);
@@ -1617,15 +1623,13 @@
                             // found.reverse();
 
                         } else {
-                            var find_video = str.match(/<link itemprop="video" value="(.*?)">/);
-                            var find_video_title = str.match(/property="og:title" content="(.*?)"/);
+
 
                             console.log( 'find_video' );
                             console.log( find_video );
                             console.log( str );
 
                             if (find_video) {
-
 
                                 network["native"](find_video[1], function (text) {
                                     var source = text.match('file:"(.*?)"');
