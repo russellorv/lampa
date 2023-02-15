@@ -1630,6 +1630,10 @@
                             if (find_video) {
 
                                 network["native"](find_video[1], function (text) {
+
+                                    text = text.replace(/\n/, '');
+                                    text = text.replace(/\r\n/, '');
+
                                     var source = text.match('file:"(.*?)"');
 
 
