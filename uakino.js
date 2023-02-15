@@ -1652,6 +1652,8 @@
                                         var playerJsString = playerJs[0];
                                         playerJsString = playerJsString.replace('Playerjs(', '');
                                         playerJsString = playerJsString.replace("'[", '');
+                                        playerJsString = playerJsString.replace("id:", '"id":');
+                                        playerJsString = playerJsString.replace("file:", '"file":');
 
                                         console.log( 'playerJsString' )
                                         console.log( playerJsString )
