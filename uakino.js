@@ -1643,6 +1643,8 @@
                                     console.log( 'playerJs' )
                                     console.log( playerJs  )
 
+                                    var find_m3u8 = false;
+
                                     if (find_m3u8 && playerJs) {
 
                                         var playerJsString = playerJs[0];
@@ -1673,6 +1675,8 @@
                                                 }
                                             }
 
+                                            find_m3u8 = true;
+
                                             console.log( 'jsonP' )
                                         } catch (e) {
 
@@ -1681,9 +1685,7 @@
                                     }
 
 
-                                    if ( found) {
-
-                                    } else {
+                                    if ( ! find_m3u8) {
                                         found.push({
                                             file: find_video[1],
                                             stream: find_video[1],
@@ -1720,7 +1722,7 @@
                             filter();
                             append(filtred());
 
-                        } else component.emptyForQuery(select_title);
+                        } else component.empty(select_title);
 
                     }, function (a, c) {
                         component.empty(network.errorDecode(a, c));
