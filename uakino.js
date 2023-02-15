@@ -1640,6 +1640,8 @@
 
                                     console.log( 'find_m3u8' )
                                     console.log( find_m3u8  )
+                                    console.log( 'playerJs'  )
+                                    console.log( playerJs  )
 
                                     var find_m3u8 = false;
 
