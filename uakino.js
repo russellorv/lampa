@@ -1431,9 +1431,14 @@
                         links.forEach(function (l) {
                             var link = $(l),
                                 titl = link.attr('title') || link.text();
+
+                            var year = $(link).parent().find('.deck-value').text();
+                            year = parseInt(year);
+
                             similars.push({
                                 title: titl,
                                 link: link.attr('href'),
+                                year: year,
                                 filmId: 'similars'
                             });
                         });
