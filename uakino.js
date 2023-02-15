@@ -1636,7 +1636,7 @@
                                     text = text.replace(/\t/, '');
 
                                     var find_m3u8 = text.match(/m3u8/);
-                                    var playerJs = text.match( /Playerjs\({(.*?)}\);/s );
+                                    var playerJs = text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm );
 
                                     console.log( 'find_m3u8' )
                                     console.log( find_m3u8 == true )
