@@ -1639,9 +1639,9 @@
                                     var playerJs = text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/ );
 
                                     console.log( 'find_m3u8' )
-                                    console.log( find_m3u8.length  )
+                                    console.log( find_m3u8  )
                                     console.log( 'playerJs' )
-                                    console.log( playerJs.length  )
+                                    console.log( playerJs  )
 
                                     if (find_m3u8 && playerJs) {
 
@@ -1681,7 +1681,9 @@
                                     }
 
 
-                                    if ( ! found.length) {
+                                    if ( found) {
+
+                                    } else {
                                         found.push({
                                             file: find_video[1],
                                             stream: find_video[1],
