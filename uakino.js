@@ -1710,9 +1710,12 @@
 
 
                                     if ( ! find_m3u8_bool) {
+
+                                        console.log( 'find one file' )
+
                                         found.push({
                                             file: find_video[1],
-                                            stream: find_video[1],
+                                            stream: '',
                                             title: find_video_title ? find_video_title[1] : 'UA',
                                             quality: '',
                                             voice: 'UA',
