@@ -1641,11 +1641,7 @@
                                     console.log( 'find_m3u8' )
                                     console.log( find_m3u8 == true )
                                     console.log( 'playerJs' )
-                                    // console.log( playerJs )
-
-                                    console.log( 'last' )
-                                    // console.log( text )
-                                    console.log( 'finds' )
+                                    console.log( playerJs == true )
 
                                     if (find_m3u8 && playerJs) {
 
@@ -1656,15 +1652,35 @@
                                         playerJsString = playerJsString.replace("file:", '"file":');
                                         playerJsString = playerJsString + '}';
 
-                                        console.log( 'playerJsString' )
-                                        console.log( playerJsString )
-
                                         try {
 
                                             var jsonP = JSON.parse(playerJsString);
 
+                                            if (jsonP.file.folder) {
+
+
+                                                console.log( jsonP.file.folder )
+
+
+                                                for (var _s in jsonP.file.folder) {
+                                                    console.log(_s)
+                                                }
+
+
+                                                // found.push({
+                                                //     file: file,
+                                                //     stream: file,
+                                                //     title: text,
+                                                //     quality: '',
+                                                //     voice: voice,
+                                                //     subtitles: false,
+                                                //     subtitle: false,
+                                                //     info: ' '
+                                                // });
+                                            }
+
                                             console.log( 'jsonP' )
-                                            console.log( jsonP )
+                                            // console.log( jsonP )
                                         } catch (e) {
 
                                             console.log( 'no parse json' )
@@ -1672,28 +1688,23 @@
                                     }
 
 
-                                    // console.log( text.match( /Playerjs\({(.*?)}\);/s ) )
-                                    // console.log( text.match( /((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
-                                    // console.log( text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
-
-
+                                    if (! found) {
+                                        found.push({
+                                            file: find_video[1],
+                                            stream: find_video[1],
+                                            title: find_video_title ? find_video_title[1] : 'UA',
+                                            quality: '',
+                                            voice: 'UA',
+                                            subtitles: false,
+                                            subtitle: false,
+                                            info: ' '
+                                        });
+                                    }
 
                                 }, function (a, c) {
                                     component.empty(network.errorDecode(a, c));
                                 }, false, {
                                     dataType: 'text'
-                                });
-
-
-                                found.push({
-                                    file: find_video[1],
-                                    stream: find_video[1],
-                                    title: find_video_title ? find_video_title[1] : 'UA',
-                                    quality: '',
-                                    voice: 'UA',
-                                    subtitles: false,
-                                    subtitle: false,
-                                    info: ' '
                                 });
 
                             } else {
