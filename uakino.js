@@ -1616,9 +1616,6 @@
 
                             var series_links = user_data.match(/<li data-file[^>]+>(.*?)<\/li>/g);
 
-                            console.log( 'user_data' );
-                            console.log( user_data );
-
                             series_links.forEach(function (l) {
                                 var link = $(l);
                                 var file = link.attr('data-file') || '';
@@ -1638,6 +1635,18 @@
                             });
 
                             // found.reverse();
+
+                            if (found) {
+
+                                console.log( 'found' )
+                                console.log( found )
+
+                                extract = found;
+
+                                filter();
+                                append(filtred());
+
+                            } else component.empty(select_title);
 
                         } else {
 
@@ -1740,6 +1749,8 @@
                         }
 
 
+                        if (found) {
+                        } else component.empty(select_title);
 
                     }, function (a, c) {
                         component.empty(network.errorDecode(a, c));
