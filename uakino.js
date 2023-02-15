@@ -1649,10 +1649,10 @@
 
                                     if (find_m3u8 && playerJs) {
 
-                                        playerJs = playerJs.replace('Playerjs(', '');
+                                        var playerJsString = playerJs[1].replace('Playerjs(', '');
 
                                         try {
-                                            var jsonP = JSON.parse(playerJs);
+                                            var jsonP = JSON.parse(playerJsString);
 
                                             console.log( 'jsonP' )
                                             console.log( jsonP )
