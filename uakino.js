@@ -1604,15 +1604,20 @@
 
                         console.log(  'news_id' );
                         console.log( select_id );
-                        console.log( 'find_series' );
-                        console.log( find_series );
+
 
                         component.loading(false);
                         var found = [];
 
                         if (find_series) {
 
+                            console.log( 'find_series' );
+                            console.log( find_series );
+
                             var series_links = user_data.match(/<li data-file[^>]+>(.*?)<\/li>/g);
+
+                            console.log( 'user_data' );
+                            console.log( user_data );
 
                             series_links.forEach(function (l) {
                                 var link = $(l);
