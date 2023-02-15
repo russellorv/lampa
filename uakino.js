@@ -1656,7 +1656,9 @@
 
                                             var jsonP = JSON.parse(playerJsString);
 
-                                            console.log( jsonP.file.folder )
+                                            console.log( jsonP['file']['folder'] )
+
+
                                             console.log( jsonP.file )
 
                                             if (jsonP.file.folder) {
