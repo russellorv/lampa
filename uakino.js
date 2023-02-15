@@ -1639,9 +1639,9 @@
                                     var playerJs = text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/ );
 
                                     console.log( 'find_m3u8' )
-                                    console.log( find_m3u8 == true )
+                                    console.log( find_m3u8.length  )
                                     console.log( 'playerJs' )
-                                    console.log( playerJs == true )
+                                    console.log( playerJs.length  )
 
                                     if (find_m3u8 && playerJs) {
 
@@ -1659,11 +1659,11 @@
                                             if (jsonP.file.folder) {
 
 
-                                                for (var _s in jsonP.file.folder) {
+                                                for (var _s of jsonP.file.folder) {
 
                                                     console.log( _s )
 
-                                                    for (var _e in _s.folder) {
+                                                    for (var _e of _s.folder) {
 
                                                         console.log( _e )
 
