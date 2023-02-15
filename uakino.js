@@ -1654,6 +1654,7 @@
                                         playerJsString = playerJsString.replace("'[", '');
                                         playerJsString = playerJsString.replace("id:", '"id":');
                                         playerJsString = playerJsString.replace("file:", '"file":');
+                                        playerJsString = playerJsString + '}';
 
                                         console.log( 'playerJsString' )
                                         console.log( playerJsString )
