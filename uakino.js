@@ -1635,7 +1635,15 @@
                                     text = text.replace(/\r\n/, '');
                                     text = text.replace(/\n/g, "").replace(/\r/g, "").replace(/\t/g, "");
 
-                                    var source = text.match('file:"(.*?)"');
+                                    var find_m3u8 = text.match('/.m3u8/g');
+                                    var playerJs = text.match('/Playerjs\((.*?)\);/g');
+
+                                    console.log( 'find_m3u8' )
+                                    console.log( find_m3u8 )
+                                    console.log( 'playerJs' )
+                                    console.log( playerJs )
+
+
 
 
                                     console.log( 'last' )
