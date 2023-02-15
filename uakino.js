@@ -1876,7 +1876,10 @@
                                 playlist.push(first);
                             }
 
-                            if (playlist.length > 1) first.playlist = playlist;
+                            if(find_m3u8) {
+                                if (playlist.length > 1) first.playlist = playlist;
+                            }
+
                             Lampa.Player.play(first);
 
                             if(find_m3u8) {
