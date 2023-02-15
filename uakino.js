@@ -1690,7 +1690,7 @@
                                     }
 
 
-                                    if (! found) {
+                                    if ( ! found.length) {
                                         found.push({
                                             file: find_video[1],
                                             stream: find_video[1],
