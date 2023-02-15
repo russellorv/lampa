@@ -1633,6 +1633,7 @@
 
                                     text = text.replace(/\n/, '');
                                     text = text.replace(/\r\n/, '');
+                                    text = text.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
 
                                     var source = text.match('file:"(.*?)"');
 
@@ -1646,7 +1647,8 @@
                                     console.log( text.match("/file:\[(.*?)\]',/gm") )
                                     console.log( text.match("/file:(.*?)]',/gm") )
                                     console.log( text.match("/file:(.*?)forbidden_quality/s") )
-                                    console.log( JSON.parse(text) )
+                                    console.log( text.match("/file(.*?)forbidden_quality/s") )
+
 
                                 }, function (a, c) {
                                     component.empty(network.errorDecode(a, c));
