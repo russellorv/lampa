@@ -1651,6 +1651,7 @@
 
                                         var playerJsString = playerJs[0];
                                         playerJsString = playerJsString.replace('Playerjs(', '');
+                                        playerJsString = playerJsString.replace("'[", '');
 
                                         console.log( 'playerJsString' )
                                         console.log( playerJsString )
