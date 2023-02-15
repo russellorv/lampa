@@ -1593,7 +1593,7 @@
                         console.log(  'news_id' );
                         console.log( select_id );
                         console.log( 'find_series' );
-                        console.log( find_series.length );
+                        console.log( find_series );
 
                         component.loading(false);
                         var found = [];
