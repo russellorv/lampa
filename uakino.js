@@ -1649,8 +1649,7 @@
 
                                     if (find_m3u8 && playerJs) {
 
-                                        var playerJsString = playerJs[1].replace('Playerjs(', '');
-
+                                        var playerJsString = playerJs[0].replace('Playerjs(', '');
 
                                         console.log( 'playerJsString' )
                                         console.log( playerJsString )
