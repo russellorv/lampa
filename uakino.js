@@ -1652,7 +1652,7 @@
                                         var playerJsString = playerJs[0].replace('Playerjs(', '');
 
                                         console.log( 'playerJsString' )
-                                        alert( playerJsString )
+                                        alert( playerJsString[0] )
 
                                         try {
 
