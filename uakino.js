@@ -1659,9 +1659,10 @@
                                             if (jsonP.file.folder) {
 
 
-                                                console.log( jsonP.file.folder )
-
                                                 for (var _s in jsonP.file.folder) {
+
+                                                    console.log( _s )
+
                                                     for (var _e in _s.folder) {
 
                                                         console.log( _e )
