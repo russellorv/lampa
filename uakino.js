@@ -1433,6 +1433,9 @@
                                 titl = link.attr('title') || link.text();
 
                             var year = $(link).parent().find('.deck-value').text();
+
+                            console.log( year );
+
                             year = parseInt(year);
 
                             similars.push({
