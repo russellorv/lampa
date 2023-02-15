@@ -1632,7 +1632,7 @@
                             if (find_video) {
 
                                 network["native"](find_video[1], function (text) {
-                                    var source = text.match('file:"(.*?)"');
+                                    var source = text.match("/file:'(.*?)'/");
 
 
                                     console.log( 'last' )
