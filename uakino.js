@@ -1638,7 +1638,7 @@
 
 
                                     console.log( 'last' )
-                                    console.log( source )
+                                    console.log( text )
                                     console.log( 'finds' )
                                     console.log( text.match('file:"(.*?)"') )
                                     console.log( text.match("/file:'\[(.*?)\]',/") )
