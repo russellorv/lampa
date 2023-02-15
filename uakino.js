@@ -1660,6 +1660,9 @@
                                                 for (var _s of jsonP.file.folder) {
                                                     for (var _e of _s.folder) {
 
+
+                                                        find_m3u8 = true;
+
                                                         console.log( _e )
 
                                                         // found.push({
@@ -1675,8 +1678,6 @@
                                                     }
                                                 }
                                             }
-
-                                            // find_m3u8 = true;
 
                                             console.log( 'jsonP' )
                                         } catch (e) {
@@ -1699,6 +1700,22 @@
                                         });
                                     }
 
+
+
+                                    if (found) {
+
+
+
+                                        console.log( 'found' )
+                                        console.log( found )
+
+                                        extract = found;
+
+                                        filter();
+                                        append(filtred());
+
+                                    } else component.empty(select_title);
+
                                 }, function (a, c) {
                                     component.empty(network.errorDecode(a, c));
                                 }, false, {
@@ -1711,19 +1728,7 @@
 
                         }
 
-                        if (found) {
 
-
-
-                            console.log( 'found' )
-                            console.log( found )
-
-                            extract = found;
-
-                            filter();
-                            append(filtred());
-
-                        } else component.empty(select_title);
 
                     }, function (a, c) {
                         component.empty(network.errorDecode(a, c));
