@@ -1633,10 +1633,9 @@
 
                                     text = text.replace(/\n/, '');
                                     text = text.replace(/\r\n/, '');
-                                    text = text.replace(/\n/g, "").replace(/\r/g, "").replace(/\t/g, "");
 
-                                    var find_m3u8 = text.match('/.m3u8/g');
-                                    var playerJs = text.match('/Playerjs\((.*?)\);/g');
+                                    var find_m3u8 = text.match(/m3u8/);
+                                    var playerJs = text.match(/Playerjs\((.*?)\);/);
 
                                     console.log( 'find_m3u8' )
                                     console.log( find_m3u8 )
