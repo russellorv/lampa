@@ -1630,12 +1630,17 @@
                             if (find_video) {
 
                                 network["native"](find_video[1], function (text) {
-                                    var source = text.match(/file:"(\d+)";/);
+                                    var source = text.match('file:"(.*?)"');
 
 
                                     console.log( 'last' )
                                     console.log( source )
-                                    console.log( text )
+                                    console.log( 'finds' )
+                                    console.log( text.match('file:"(.*?)"') )
+                                    console.log( text.match("/file:'\[(.*?)\]',/") )
+                                    console.log( text.match("/file:'\[(.*?)\]',/gm") )
+                                    console.log( text.match("/file:\[(.*?)\]',/gm") )
+                                    console.log( text.match("/file:(.*?)]',/gm") )
 
                                 }, function (a, c) {
                                     component.empty(network.errorDecode(a, c));
