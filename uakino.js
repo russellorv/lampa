@@ -1652,7 +1652,7 @@
                                         var playerJsString = playerJs[0].replace('Playerjs(', '');
 
                                         console.log( 'playerJsString' )
-                                        console.log( playerJsString )
+                                        alert( playerJsString )
 
                                         try {
 
@@ -1661,7 +1661,8 @@
                                             console.log( 'jsonP' )
                                             console.log( jsonP )
                                         } catch (e) {
-                                            return false;
+
+                                            console.log( 'no parse json' )
                                         }
                                     }
 
