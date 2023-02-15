@@ -1867,16 +1867,21 @@
 
                                 items.forEach(function (elem) {
                                     getFile(elem);
-                                    playlist.push({
-                                        title: elem.title,
-                                        url: elem.stream,
-                                        timeline: elem.timeline,
-                                        subtitles: elem.subtitles,
-                                        quality: elem.qualitys
-                                    });
+
+                                    if (find_m3u8) {
+                                        playlist.push({
+                                            title: elem.title,
+                                            url: elem.stream,
+                                            timeline: elem.timeline,
+                                            subtitles: elem.subtitles,
+                                            quality: elem.qualitys
+                                        });
+                                    }
                                 });
                             } else {
-                                playlist.push(first);
+                                if (find_m3u8) {
+                                    playlist.push(first);
+                                }
                             }
 
                             if(find_m3u8) {
