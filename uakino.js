@@ -3619,6 +3619,12 @@
     }
 
     Lampa.Lang.add({
+        online_watch: {
+            ru: 'Смотреть онлайн UA',
+            en: 'Watch online UA',
+            ua: 'Дивитися онлайн UA',
+            zh: '在线观看'
+        },
         online_nolink: {
             ru: 'Не удалось извлечь ссылку',
             uk: 'Неможливо отримати посилання',
