@@ -1638,14 +1638,11 @@
                                     var find_m3u8 = text.match(/m3u8/);
                                     var playerJs = text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/ );
 
-                                    console.log( 'find_m3u8' )
-                                    console.log( find_m3u8  )
-                                    console.log( 'playerJs'  )
-                                    console.log( playerJs  )
-
                                     var find_m3u8_bool = false;
 
                                     if (find_m3u8 && playerJs) {
+
+                                        console.log( 'find_m3u8' )
 
                                         var playerJsString = playerJs[0];
                                         playerJsString = playerJsString.replace('Playerjs(', '');
@@ -1654,25 +1651,15 @@
                                         playerJsString = playerJsString.replace("file:", '"file":');
                                         playerJsString = playerJsString + '}';
 
-                                        console.log( playerJsString )
-
                                         try {
 
                                             var jsonP = JSON.parse(playerJsString);
-
-                                            console.log( jsonP['file']['folder'] )
-
-
-                                            console.log( jsonP.file )
 
                                             if (jsonP.file.folder) {
                                                 for (var _s of jsonP.file.folder) {
                                                     for (var _e of _s.folder) {
 
-
                                                         find_m3u8_bool = true;
-
-                                                        console.log( _e )
 
                                                         found.push({
                                                             file: _e.file,
@@ -1846,23 +1833,28 @@
                             };
 
                             if (element.season) {
-                                // items.forEach(function (elem) {
-                                //     getFile(elem);
-                                //     playlist.push({
-                                //         title: elem.title,
-                                //         url: elem.stream,
-                                //         timeline: elem.timeline,
-                                //         subtitles: elem.subtitles,
-                                //         quality: elem.qualitys
-                                //     });
-                                // });
+
+                                items.forEach(function (elem) {
+                                    getFile(elem);
+                                    playlist.push({
+                                        title: elem.title,
+                                        url: elem.stream,
+                                        timeline: elem.timeline,
+                                        subtitles: elem.subtitles,
+                                        quality: elem.qualitys
+                                    });
+                                });
                             } else {
-                                // playlist.push(first);
+                                playlist.push(first);
                             }
 
                             if (playlist.length > 1) first.playlist = playlist;
                             Lampa.Player.play(first);
-                            // Lampa.Player.playlist(playlist);
+
+                            if(find_m3u8) {
+                                Lampa.Player.playlist(playlist);
+                            }
+
 
                             if (viewed.indexOf(hash_file) == -1) {
                                 viewed.push(hash_file);
