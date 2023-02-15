@@ -1624,7 +1624,7 @@
 
                                 found.push({
                                     file: file,
-                                    stream: file,
+                                    stream: '',
                                     title: text,
                                     quality: '',
                                     voice: voice,
