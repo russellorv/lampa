@@ -1649,10 +1649,11 @@
 
                                     if (find_m3u8 && playerJs) {
 
-                                        var playerJsString = playerJs[0].replace('Playerjs(', '');
+                                        var playerJsString = playerJs[0];
+                                        playerJsString = playerJsString.replace('Playerjs(', '');
 
                                         console.log( 'playerJsString' )
-                                        alert( playerJsString[0] )
+                                        alert( playerJsString )
 
                                         try {
 
@@ -1667,9 +1668,9 @@
                                     }
 
 
-                                    console.log( text.match( /Playerjs\({(.*?)}\);/s ) )
-                                    console.log( text.match( /((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
-                                    console.log( text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
+                                    // console.log( text.match( /Playerjs\({(.*?)}\);/s ) )
+                                    // console.log( text.match( /((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
+                                    // console.log( text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
 
 
 
