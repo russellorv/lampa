@@ -1641,7 +1641,7 @@
                                     console.log( 'find_m3u8' )
                                     console.log( find_m3u8 == true )
                                     console.log( 'playerJs' )
-                                    console.log( playerJs == true )
+                                    console.log( playerJs )
 
                                     console.log( 'last' )
                                     // console.log( text )
@@ -1666,17 +1666,11 @@
                                         }
                                     }
 
-                                    //
-                                    // console.log( text.match( /Playerjs\({(.*?)}\);/s ) )
-                                    // console.log( text.match( /((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
-                                    // console.log( text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
-                                    //
-                                    // console.log( text.match("/file:'\[(.*?)\]',/") )
-                                    // console.log( text.match("/file:'\[(.*?)\]',/gm") )
-                                    // console.log( text.match("/file:\[(.*?)\]',/gm") )
-                                    // console.log( text.match("/file:(.*?)]',/gm") )
-                                    // console.log( text.match("/file:(.*?)forbidden_quality/s") )
-                                    // console.log( text.match("/file(.*?)forbidden_quality/s") )
+
+                                    console.log( text.match( /Playerjs\({(.*?)}\);/s ) )
+                                    console.log( text.match( /((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
+                                    console.log( text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
+
 
 
                                 }, function (a, c) {
