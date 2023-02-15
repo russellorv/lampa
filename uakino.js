@@ -1432,9 +1432,9 @@
                             var link = $(l),
                                 titl = link.attr('title') || link.text();
 
-                            var year = $(link).parent().find('.deck-value').text();
+                            var year = $(l).parent().find('.deck-value').text();
 
-                            console.log( year );
+                            console.log( $(l).parent().text() );
 
                             year = parseInt(year);
 
