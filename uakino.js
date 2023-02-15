@@ -1633,7 +1633,7 @@
 
                                     text = text.replace(/\n/, '');
                                     text = text.replace(/\r\n/, '');
-                                    text = text.replace(/\n/g, "\\\\n").replace(/\r/g, "\\\\r").replace(/\t/g, "\\\\t");
+                                    text = text.replace(/\n/g, "").replace(/\r/g, "").replace(/\t/g, "");
 
                                     var source = text.match('file:"(.*?)"');
 
