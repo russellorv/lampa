@@ -1661,22 +1661,21 @@
 
                                                 console.log( jsonP.file.folder )
 
-
                                                 for (var _s in jsonP.file.folder) {
-                                                    console.log(_s)
+                                                    for (var _e in _s.folder) {
+
+                                                        found.push({
+                                                            file: _e.file,
+                                                            stream: _e.file,
+                                                            title: _s.title + _e.title,
+                                                            quality: '',
+                                                            voice: _s.title,
+                                                            subtitles: false,
+                                                            subtitle: false,
+                                                            info: ' '
+                                                        });
+                                                    }
                                                 }
-
-
-                                                // found.push({
-                                                //     file: file,
-                                                //     stream: file,
-                                                //     title: text,
-                                                //     quality: '',
-                                                //     voice: voice,
-                                                //     subtitles: false,
-                                                //     subtitle: false,
-                                                //     info: ' '
-                                                // });
                                             }
 
                                             console.log( 'jsonP' )
@@ -1740,6 +1739,17 @@
                 first = '';
             var preferably = Lampa.Storage.get('video_quality_default', '1080');
 
+
+            var find_m3u8 = element.file.match(/m3u8/);
+            if (find_m3u8) {
+                element.stream = element.file;
+
+                return {
+                    file: element.stream,
+                    quality: quality
+                };
+            }
+
             // network.clear();
             // network.timeout(1000 * 10);
             network["native"](element.file, function (text) {
@@ -1801,6 +1811,11 @@
                         var source = text.match('file:"(.*?)"');
                         if (source) {
                             element.stream = source[1];
+                        }
+
+                        var find_m3u8 = element.file.match(/m3u8/);
+                        if (find_m3u8) {
+                            element.stream = element.file;
                         }
 
                         if (element.stream) {
