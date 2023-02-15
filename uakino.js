@@ -1664,6 +1664,8 @@
                                                 for (var _s in jsonP.file.folder) {
                                                     for (var _e in _s.folder) {
 
+                                                        console.log( _e )
+
                                                         found.push({
                                                             file: _e.file,
                                                             stream: _e.file,
@@ -1713,6 +1715,9 @@
                         }
 
                         if (found) {
+
+                            console.log( 'found' )
+                            console.log( found )
 
                             extract = found;
 
