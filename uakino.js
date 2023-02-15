@@ -1641,14 +1641,15 @@
                                     console.log( find_m3u8 )
                                     console.log( 'playerJs' )
                                     console.log( playerJs )
-
+                                    console.log( text.match( /Playerjs\({(.*?)}\);/s ) )
+                                    console.log( text.match( /((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
 
 
 
                                     console.log( 'last' )
                                     console.log( text )
                                     console.log( 'finds' )
-                                    console.log( text.match('file:"(.*?)"') )
+
                                     console.log( text.match("/file:'\[(.*?)\]',/") )
                                     console.log( text.match("/file:'\[(.*?)\]',/gm") )
                                     console.log( text.match("/file:\[(.*?)\]',/gm") )
