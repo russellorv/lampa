@@ -1593,7 +1593,7 @@
                         console.log(  'news_id' );
                         console.log( select_id );
                         console.log( 'find_series' );
-                        console.log( find_series );
+                        console.log( find_series.length );
 
                         component.loading(false);
                         var found = [];
@@ -1657,20 +1657,12 @@
                                             var jsonP = JSON.parse(playerJsString);
 
                                             if (jsonP.file.folder) {
-
-
                                                 for (var _s of jsonP.file.folder) {
-
-                                                    console.log( _s )
-
                                                     for (var _e of _s.folder) {
-
-                                                        console.log( _e )
-
                                                         found.push({
                                                             file: _e.file,
                                                             stream: _e.file,
-                                                            title: _s.title + _e.title,
+                                                            title: _s.title + ' ' + _e.title,
                                                             quality: '',
                                                             voice: _s.title,
                                                             subtitles: false,
@@ -1682,7 +1674,6 @@
                                             }
 
                                             console.log( 'jsonP' )
-                                            // console.log( jsonP )
                                         } catch (e) {
 
                                             console.log( 'no parse json' )
@@ -1750,6 +1741,7 @@
                 first = '';
             var preferably = Lampa.Storage.get('video_quality_default', '1080');
 
+            element.qualitys = '';
 
             var find_m3u8 = element.file.match(/m3u8/);
             if (find_m3u8) {
