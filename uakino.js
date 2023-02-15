@@ -1643,7 +1643,7 @@
                                     console.log( 'playerJs'  )
                                     console.log( playerJs  )
 
-                                    var find_m3u8 = false;
+                                    var find_m3u8_bool = false;
 
                                     if (find_m3u8 && playerJs) {
 
@@ -1670,20 +1670,20 @@
                                                     for (var _e of _s.folder) {
 
 
-                                                        find_m3u8 = true;
+                                                        find_m3u8_bool = true;
 
                                                         console.log( _e )
 
-                                                        // found.push({
-                                                        //     file: _e.file,
-                                                        //     stream: _e.file,
-                                                        //     title: _s.title + ' ' + _e.title,
-                                                        //     quality: '',
-                                                        //     voice: _s.title,
-                                                        //     subtitles: false,
-                                                        //     subtitle: false,
-                                                        //     info: ' '
-                                                        // });
+                                                        found.push({
+                                                            file: _e.file,
+                                                            stream: _e.file,
+                                                            title: _s.title + ' ' + _e.title,
+                                                            quality: '',
+                                                            voice: _s.title,
+                                                            subtitles: false,
+                                                            subtitle: false,
+                                                            info: ' '
+                                                        });
                                                     }
                                                 }
                                             }
@@ -1696,7 +1696,7 @@
                                     }
 
 
-                                    if ( ! find_m3u8) {
+                                    if ( ! find_m3u8_bool) {
                                         found.push({
                                             file: find_video[1],
                                             stream: find_video[1],
@@ -1712,8 +1712,6 @@
 
 
                                     if (found) {
-
-
 
                                         console.log( 'found' )
                                         console.log( found )
