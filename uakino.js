@@ -1835,7 +1835,6 @@
 
                     console.log( 'element' )
                     console.log( element )
-                    console.log( object.movie )
 
                     // network.clear();
                     // network.timeout(1000 * 10);
@@ -1846,6 +1845,10 @@
                         }
 
                         var find_m3u8 = element.file.match(/m3u8/);
+
+                        console.log(  'find_m3u8'  )
+                        console.log(  find_m3u8  )
+
                         if (find_m3u8) {
                             element.stream = element.file;
                         }
