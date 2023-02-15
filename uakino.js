@@ -1640,8 +1640,6 @@
 
                                     console.log( 'find_m3u8' )
                                     console.log( find_m3u8  )
-                                    console.log( 'playerJs' )
-                                    console.log( playerJs  )
 
                                     var find_m3u8 = false;
 
@@ -1661,21 +1659,24 @@
                                             if (jsonP.file.folder) {
                                                 for (var _s of jsonP.file.folder) {
                                                     for (var _e of _s.folder) {
-                                                        found.push({
-                                                            file: _e.file,
-                                                            stream: _e.file,
-                                                            title: _s.title + ' ' + _e.title,
-                                                            quality: '',
-                                                            voice: _s.title,
-                                                            subtitles: false,
-                                                            subtitle: false,
-                                                            info: ' '
-                                                        });
+
+                                                        console.log( _e )
+
+                                                        // found.push({
+                                                        //     file: _e.file,
+                                                        //     stream: _e.file,
+                                                        //     title: _s.title + ' ' + _e.title,
+                                                        //     quality: '',
+                                                        //     voice: _s.title,
+                                                        //     subtitles: false,
+                                                        //     subtitle: false,
+                                                        //     info: ' '
+                                                        // });
                                                     }
                                                 }
                                             }
 
-                                            find_m3u8 = true;
+                                            // find_m3u8 = true;
 
                                             console.log( 'jsonP' )
                                         } catch (e) {
