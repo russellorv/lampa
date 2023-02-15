@@ -1646,7 +1646,7 @@
                                 filter();
                                 append(filtred());
 
-                            } else component.empty(select_title);
+                            } component.empty(Lampa.Lang.translate('torrent_parser_no_hash'));
 
                         } else {
 
@@ -1704,7 +1704,7 @@
                                             console.log( 'jsonP' )
                                         } catch (e) {
 
-                                            console.log( 'no parse json' )
+                                            component.empty(Lampa.Lang.translate('torrent_parser_no_hash'));
                                         }
                                     }
 
@@ -1737,7 +1737,7 @@
                                         filter();
                                         append(filtred());
 
-                                    } else component.empty(select_title);
+                                    } component.empty(Lampa.Lang.translate('torrent_parser_no_hash'));
 
                                 }, function (a, c) {
                                     component.empty(network.errorDecode(a, c));
@@ -1753,7 +1753,7 @@
 
 
                         if (found) {
-                        } else component.empty(select_title);
+                        } else component.empty(Lampa.Lang.translate('torrent_parser_no_hash'));
 
                     }, function (a, c) {
                         component.empty(network.errorDecode(a, c));
