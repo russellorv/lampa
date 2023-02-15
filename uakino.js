@@ -1396,7 +1396,7 @@
                 var str = text.replace(/\n/, '');
                 str = str.replace(/\r\n/, '');
                 var links = str.match(/<a class="movie-title"[^>]+>(.*?)<\/a>/g);
-                var links2 = str.match(/<div class="movie-item short-item"[^>]+>(.*?)<\/div>/g);
+                var links2 = str.match( /<div class=["|']movie-item short-item["|']>(.*?)<\/div>/gms  );
 
                 console.log( 'links2' );
                 console.log( links2 );
