@@ -1398,7 +1398,9 @@
                 var links = str.match(/<a class="movie-title"[^>]+>(.*?)<\/a>/g);
                 var links2 = str.match(/<div class="movie-item short-item"[^>]+>(.*?)<\/div>/g);
 
+                console.log( 'links2' );
                 console.log( links2 );
+                console.log( text );
 
                 var relise = object.search_date || (object.movie.number_of_seasons ? object.movie.first_air_date : object.movie.release_date) || '0000';
                 var need_year = parseInt((relise + '').slice(0, 4));
