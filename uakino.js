@@ -1639,19 +1639,24 @@
                                     var playerJs = text.match( /Playerjs\({(.*?)}\);/s );
 
                                     console.log( 'find_m3u8' )
-                                    console.log( find_m3u8 )
+                                    console.log( find_m3u8 == true )
                                     console.log( 'playerJs' )
-                                    console.log( playerJs )
+                                    console.log( playerJs == true )
 
                                     console.log( 'last' )
-                                    console.log( text )
+                                    // console.log( text )
                                     console.log( 'finds' )
 
                                     if (find_m3u8 && playerJs) {
 
                                         var playerJsString = playerJs[1].replace('Playerjs(', '');
 
+
+                                        console.log( 'playerJsString' )
+                                        console.log( playerJsString )
+
                                         try {
+
                                             var jsonP = JSON.parse(playerJsString);
 
                                             console.log( 'jsonP' )
