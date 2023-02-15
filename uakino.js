@@ -1647,7 +1647,7 @@
                                 filter();
                                 append(filtred());
 
-                            } component.empty(Lampa.Lang.translate('torrent_parser_no_hash'));
+                            } else component.empty(Lampa.Lang.translate('torrent_parser_no_hash'));
 
                         } else {
 
@@ -1738,7 +1738,7 @@
                                         filter();
                                         append(filtred());
 
-                                    } component.empty(Lampa.Lang.translate('torrent_parser_no_hash'));
+                                    } else  component.empty(Lampa.Lang.translate('torrent_parser_no_hash'));
 
                                 }, function (a, c) {
                                     component.empty(network.errorDecode(a, c));
@@ -1753,8 +1753,8 @@
                         }
 
 
-                        // if (found) {
-                        // } else component.empty(Lampa.Lang.translate('torrent_parser_no_hash'));
+                        if (found) {
+                        } else component.empty(Lampa.Lang.translate('torrent_parser_no_hash'));
 
                     }, function (a, c) {
                         component.empty(network.errorDecode(a, c));
