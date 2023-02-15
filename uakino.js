@@ -1636,12 +1636,12 @@
                                     text = text.replace(/\t/, '');
 
                                     var find_m3u8 = text.match(/m3u8/);
-                                    var playerJs = text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm );
+                                    var playerJs = text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/ );
 
                                     console.log( 'find_m3u8' )
                                     console.log( find_m3u8 == true )
                                     console.log( 'playerJs' )
-                                    console.log( playerJs )
+                                    // console.log( playerJs )
 
                                     console.log( 'last' )
                                     // console.log( text )
@@ -1653,7 +1653,7 @@
                                         playerJsString = playerJsString.replace('Playerjs(', '');
 
                                         console.log( 'playerJsString' )
-                                        alert( playerJsString )
+                                        console.log( playerJsString )
 
                                         try {
 
