@@ -1407,6 +1407,10 @@
                         var link = $(l),
                             titl = link.attr('title') || link.text() || '';
                         var year = parseInt(titl.split('(').pop().slice(0, -1));
+
+                        year = $(link).parent().find('.deck-value').text();
+                        year = parseInt(year);
+
                         if (year > need_year - 2 && year < need_year + 2) cards.push({
                             year: year,
                             title: titl.split(/\(\d{4}\)/)[0].trim(),
