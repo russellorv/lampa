@@ -1,4 +1,5 @@
-//20.10.2022 - Remove cdnmovies and fix search
+// For uakino.club
+// blackenedd18@gmail.com
 
 (function () {
     'use strict';
