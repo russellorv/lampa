@@ -1652,6 +1652,8 @@
                                         playerJsString = playerJsString.replace("file:", '"file":');
                                         playerJsString = playerJsString + '}';
 
+                                        console.log( playerJsString )
+
                                         try {
 
                                             var jsonP = JSON.parse(playerJsString);
