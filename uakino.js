@@ -1642,22 +1642,36 @@
                                     console.log( find_m3u8 )
                                     console.log( 'playerJs' )
                                     console.log( playerJs )
-                                    console.log( text.match( /Playerjs\({(.*?)}\);/s ) )
-                                    console.log( text.match( /((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
-                                    console.log( text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
-
-
 
                                     console.log( 'last' )
                                     console.log( text )
                                     console.log( 'finds' )
 
-                                    console.log( text.match("/file:'\[(.*?)\]',/") )
-                                    console.log( text.match("/file:'\[(.*?)\]',/gm") )
-                                    console.log( text.match("/file:\[(.*?)\]',/gm") )
-                                    console.log( text.match("/file:(.*?)]',/gm") )
-                                    console.log( text.match("/file:(.*?)forbidden_quality/s") )
-                                    console.log( text.match("/file(.*?)forbidden_quality/s") )
+                                    if (find_m3u8 && playerJs) {
+
+                                        playerJs = playerJs.replace('Playerjs(', '');
+
+                                        try {
+                                            var jsonP = JSON.parse(playerJs);
+
+                                            console.log( 'jsonP' )
+                                            console.log( jsonP )
+                                        } catch (e) {
+                                            return false;
+                                        }
+                                    }
+
+                                    //
+                                    // console.log( text.match( /Playerjs\({(.*?)}\);/s ) )
+                                    // console.log( text.match( /((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
+                                    // console.log( text.match( /(Playerjs\((\[[^\}]+)?\{s*[^\}\{]{3,}?:.*\}([^\{]+\])?)/gm ) )
+                                    //
+                                    // console.log( text.match("/file:'\[(.*?)\]',/") )
+                                    // console.log( text.match("/file:'\[(.*?)\]',/gm") )
+                                    // console.log( text.match("/file:\[(.*?)\]',/gm") )
+                                    // console.log( text.match("/file:(.*?)]',/gm") )
+                                    // console.log( text.match("/file:(.*?)forbidden_quality/s") )
+                                    // console.log( text.match("/file(.*?)forbidden_quality/s") )
 
 
                                 }, function (a, c) {
