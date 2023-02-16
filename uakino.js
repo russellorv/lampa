@@ -36,12 +36,13 @@
 
                 var str = text.replace(/\n/, '');
                 str = str.replace(/\r\n/, '');
+                str = str.replace('parse', '');
                 str = str.replace('\t', '');
                 str = str.replace('\t\t', '');
                 str = str.replace('\t\t\t', '');
                 str = str.replace('\t\t\t\t', '');
                 var links = str.match(/<a class="movie-title"[^>]+>(.*?)<\/a>/g);
-                var links2 = str.match( /<div class="movie-item short-item">(.*?)<\/div><\/div><\/div>/g );
+                var links2 = str.match( /<div id=['|"]dle-content(.*?)<!-- підключаємо бокову колонку/ );
 
                 console.log( str )
                 console.log( links2 )
@@ -52,6 +53,15 @@
 
                 if (links) {
                     var cards = [];
+
+                    if (links2) {
+                        var root = $(links2);
+                        root.find('.movie-item.short-item').forEach(function (l) {
+                            console.log( $(l).text() )
+                        });
+                    }
+
+
                     links.filter(function (l) {
                         var link = $(l),
                             titl = link.attr('title') || link.text() || '';
@@ -84,10 +94,6 @@
                             var href = $(item).find('a.movie-title').attr('href');
                             var title = $(item).find('a.movie-title').text();
                             var info = $(item).find('.deck-value').text();
-
-                            console.log( href )
-                            console.log( title )
-                            console.log( info )
                         });
 
 
