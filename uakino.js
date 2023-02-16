@@ -55,8 +55,8 @@
                     var cards = [];
 
                     if (links2) {
-                        var root = $(links2);
-                        root.find('.movie-item.short-item').forEach(function (l) {
+                        var root = $(links2[0]);
+                        $(root).find('.movie-item.short-item').forEach(function (l) {
                             console.log( $(l).text() )
                         });
                     }
