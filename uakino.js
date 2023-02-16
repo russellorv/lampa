@@ -41,11 +41,9 @@
                 str = str.replace('\t\t', '');
                 str = str.replace('\t\t\t', '');
                 str = str.replace('\t\t\t\t', '');
+
                 var links = str.match(/<a class="movie-title"[^>]+>(.*?)<\/a>/g);
                 var links2 = str.match( /<div id=['|"]dle-content(.*?)<!-- підключаємо бокову колонку/ );
-
-                console.log( str )
-                console.log( links2 )
 
                 var relise = object.search_date || (object.movie.number_of_seasons ? object.movie.first_air_date : object.movie.release_date) || '0000';
                 var need_year = parseInt((relise + '').slice(0, 4));
@@ -86,9 +84,9 @@
                             var root = $(links2[0]);
                             var items = $(root).find('.movie-item.short-item');
                             if (items) {
-                                no_find_all = false;
-
                                 $(items).each(function () {
+
+                                    no_find_all = false;
 
                                     var href = $(this).find('a.movie-title').attr('href');
                                     var title = $(this).find('a.movie-title').text();
@@ -839,8 +837,8 @@
             json.forEach(function (elem) {
                 var year = elem.start_date || elem.year || '';
                 elem.title = elem.title || elem.ru_title || elem.en_title || elem.nameRu || elem.nameEn;
-                elem.quality = year ? (year + '').slice(0, 4) : '----';
-                elem.info = '';
+                elem.quality = year ? year : '----';
+                elem.info  = year ? year : '----';
                 var item = Lampa.Template.get('online_folder', elem);
                 item.on('hover:enter', function () {
                     _this3.activity.loader(true);
