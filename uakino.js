@@ -837,7 +837,7 @@
             json.forEach(function (elem) {
                 var year = elem.start_date || elem.year || '';
                 elem.title = elem.title || elem.ru_title || elem.en_title || elem.nameRu || elem.nameEn;
-                elem.quality = year ? year : '----';
+                elem.quality = '';
                 elem.info  = year ? year : '----';
                 var item = Lampa.Template.get('online_folder', elem);
                 item.on('hover:enter', function () {
