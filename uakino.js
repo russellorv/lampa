@@ -88,11 +88,11 @@
                             if (items) {
                                 no_find_all = false;
 
-                                $(items).each(function (l) {
+                                $(items).each(function () {
 
-                                    var href = $(l).find('a.movie-title').attr('href');
-                                    var title = $(l).find('a.movie-title').text();
-                                    var info = $(l).find('div.deck-value').text();
+                                    var href = $(this).find('a.movie-title').attr('href');
+                                    var title = $(this).find('a.movie-title').text();
+                                    var info = $(this).find('div.deck-value').text();
 
                                     similars.push({
                                         title: title,
