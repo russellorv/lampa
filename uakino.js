@@ -3009,7 +3009,7 @@
         });
         var files = new Lampa.Files(object);
         var filter = new Lampa.Filter(object);
-        var balanser = Lampa.Storage.get('online_balanser', 'videocdn');
+        var balanser = Lampa.Storage.get('online_balanser', 'uakino');
         var last_bls = Lampa.Storage.cache('online_last_balanser', 200, {});
 
         if (last_bls[object.movie.id]) {
@@ -3029,13 +3029,7 @@
         };
 
         var sources = {
-            videocdn: new videocdn(this, object),
-            rezka: new rezka(this, object),
-            kinobase: new kinobase(this, object),
-            collaps: new collaps(this, object),
-            cdnmovies: new cdnmovies(this, object),
-            uakino: new uakino(this, object),
-            filmix: new filmix(this, object)
+            uakino: new uakino(this, object)
         };
         var last;
         var last_filter;
@@ -3046,13 +3040,13 @@
             voice: Lampa.Lang.translate('torrent_parser_voice'),
             source: Lampa.Lang.translate('settings_rest_source')
         };
-        var filter_sources = ['uakino', 'videocdn', 'rezka', 'kinobase', 'collaps', 'filmix'];
-        var ignore_sources = ['filmix', 'kinobase'];
-        var kiposk_sources = ['rezka', 'collaps']; // шаловливые ручки
+        var filter_sources = ['uakino',];
+        var ignore_sources = [];
+        var kiposk_sources = []; // шаловливые ручки
 
         if (filter_sources.indexOf(balanser) == -1) {
-            balanser = 'videocdn';
-            Lampa.Storage.set('online_balanser', 'videocdn');
+            balanser = 'uakino';
+            Lampa.Storage.set('online_balanser', 'uakino');
         }
 
         scroll.body().addClass('torrent-list');
@@ -3810,13 +3804,11 @@
     }); ///////ONLINE/////////
 
     Lampa.Params.select('online_proxy_all', '', '');
-    Lampa.Params.select('online_proxy_videocdn', '', '');
-    Lampa.Params.select('online_proxy_rezka', '', '');
-    Lampa.Params.select('online_proxy_kinobase', '', '');
     Lampa.Params.select('online_proxy_uakino', '', '');
-    Lampa.Params.select('online_proxy_collaps', '', '');
-    Lampa.Params.select('online_proxy_cdnmovies', '', '');
-    Lampa.Template.add('settings_proxy', "<div>\n    <div class=\"settings-param selector\" data-type=\"input\" data-name=\"online_proxy_all\" placeholder=\"#{online_proxy_placeholder}\">\n        <div class=\"settings-param__name\">#{online_proxy_title}</div>\n        <div class=\"settings-param__value\"></div>\n        <div class=\"settings-param__descr\">#{online_proxy_descr}</div>\n    </div>\n\n    <div class=\"settings-param selector\" data-type=\"input\" data-name=\"online_proxy_videocdn\" placeholder=\"#{online_proxy_placeholder}\">\n        <div class=\"settings-param__name\">Videocdn</div>\n        <div class=\"settings-param__value\"></div>\n    </div>\n\n    <div class=\"settings-param selector\" data-type=\"input\" data-name=\"online_proxy_rezka\" placeholder=\"#{online_proxy_placeholder}\">\n        <div class=\"settings-param__name\">Rezka</div>\n        <div class=\"settings-param__value\"></div>\n    </div>\n\n    <div class=\"settings-param selector\" data-type=\"input\" data-name=\"online_proxy_kinobase\" placeholder=\"#{online_proxy_placeholder}\">\n        <div class=\"settings-param__name\">Kinobase</div>\n        <div class=\"settings-param__value\"></div>\n    </div>\n\n  <div class=\"settings-param selector\" data-type=\"input\" data-name=\"online_proxy_uakino\" placeholder=\"#{online_proxy_placeholder}\">\n        <div class=\"settings-param__name\">UAKINO</div>\n        <div class=\"settings-param__value\"></div>\n    </div>\n\n   <div class=\"settings-param selector\" data-type=\"input\" data-name=\"online_proxy_collaps\" placeholder=\"#{online_proxy_placeholder}\">\n        <div class=\"settings-param__name\">Collaps</div>\n        <div class=\"settings-param__value\"></div>\n    </div>\n\n    <div class=\"settings-param selector\" data-type=\"input\" data-name=\"online_proxy_cdnmovies\" placeholder=\"#{online_proxy_placeholder}\">\n        <div class=\"settings-param__name\">Cdnmovies</div>\n        <div class=\"settings-param__value\"></div>\n    </div>\n</div>");
+
+    Lampa.Template.add('settings_proxy', "<div>\n    " +
+        "<div class=\"settings-param selector\" data-type=\"input\" data-name=\"online_proxy_all\" placeholder=\"#{online_proxy_placeholder}\">\n        <div class=\"settings-param__name\">#{online_proxy_title}</div>\n        <div class=\"settings-param__value\"></div>\n        <div class=\"settings-param__descr\">#{online_proxy_descr}</div>\n    </div>\n\n     " +
+        "<div class=\"settings-param selector\" data-type=\"input\" data-name=\"online_proxy_uakino\" placeholder=\"#{online_proxy_placeholder}\">\n        <div class=\"settings-param__name\">UAKINO</div>\n        <div class=\"settings-param__value\"></div>\n    </div>\n\n</div>");
 
     function addSettingsProxy() {
         if (Lampa.Settings.main && !Lampa.Settings.main().render().find('[data-component="proxy"]').length) {
