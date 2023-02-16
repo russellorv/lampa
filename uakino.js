@@ -1,5 +1,6 @@
 // For uakino.club
 // blackenedd18@gmail.com
+// v.1.1
 
 (function () {
     'use strict';
@@ -36,6 +37,8 @@
                 var str = text.replace(/\n/, '');
                 str = str.replace(/\r\n/, '');
                 var links = str.match(/<a class="movie-title"[^>]+>(.*?)<\/a>/g);
+
+                console.log( str )
 
                 var relise = object.search_date || (object.movie.number_of_seasons ? object.movie.first_air_date : object.movie.release_date) || '0000';
                 var need_year = parseInt((relise + '').slice(0, 4));
