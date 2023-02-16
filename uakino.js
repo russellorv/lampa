@@ -37,8 +37,11 @@
                 var str = text.replace(/\n/, '');
                 str = str.replace(/\r\n/, '');
                 str = str.replace('\t', '');
+                str = str.replace('\t\t', '');
+                str = str.replace('\t\t\t', '');
+                str = str.replace('\t\t\t\t', '');
                 var links = str.match(/<a class="movie-title"[^>]+>(.*?)<\/a>/g);
-                var links2 = str.match( /<div class="movie-item short-item">(.*?)<\/div><\/div><\/div>/gm );
+                var links2 = str.match( /<div class="movie-item short-item">(.*?)<\/div><\/div><\/div>/g );
 
                 console.log( str )
                 console.log( links2 )
