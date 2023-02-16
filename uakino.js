@@ -1216,15 +1216,15 @@
 
     Lampa.Lang.add({
         online_watch: {
-            ru: 'Смотреть онлайн UA',
-            en: 'Watch online UA',
-            ua: 'Дивитися онлайн UA',
+            ru: 'Смотреть онлайн',
+            en: 'Watch online',
+            ua: 'Дивитися онлайн',
             zh: '在线观看'
         },
         title_watch: {
-            ru: 'Смотреть онлайн UA',
-            en: 'Watch online UA',
-            ua: 'Дивитися онлайн UA',
+            ru: 'Смотреть онлайн',
+            en: 'Watch online',
+            ua: 'Дивитися онлайн',
             zh: '在线观看'
         },
         online_nolink: {
@@ -1264,8 +1264,8 @@
             zh: '没有结果'
         },
         title_online: {
-            ru: 'Онлайн UA',
-            uk: 'Онлайн UA',
+            ru: 'Онлайн',
+            uk: 'Онлайн',
             en: 'Online',
             zh: '在线的'
         },
