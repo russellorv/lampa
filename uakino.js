@@ -1821,70 +1821,7 @@
         });
     } ///////FILMIX/////////
 
-    var network = new Lampa.Reguest();
-    var api_url = 'http://filmixapp.cyou/api/v2/';
-    var user_dev = '?user_dev_apk=1.1.3&user_dev_id=' + Lampa.Utils.uid(16) + '&user_dev_name=Xiaomi&user_dev_os=11&user_dev_vendor=Xiaomi&user_dev_token=';
-    var ping_auth;
-    Lampa.Params.select('filmix_token', '', '');
-    Lampa.Template.add('settings_filmix', "<div>\n    <div class=\"settings-param selector\" data-name=\"filmix_token\" data-type=\"input\" placeholder=\"#{filmix_param_placeholder}\">\n        <div class=\"settings-param__name\">#{filmix_param_add_title}</div>\n        <div class=\"settings-param__value\"></div>\n        <div class=\"settings-param__descr\">#{filmix_param_add_descr}</div>\n    </div>\n    <div class=\"settings-param selector\" data-name=\"filmix_add\" data-static=\"true\">\n        <div class=\"settings-param__name\">#{filmix_param_add_device}</div>\n    </div>\n</div>");
-    Lampa.Storage.listener.follow('change', function (e) {
 
-    });
-
-    function addSettingsFilmix() {
-        if (Lampa.Settings.main && !Lampa.Settings.main().render().find('[data-component="filmix"]').length) {
-            var field = $("<div class=\"settings-folder selector\" data-component=\"filmix\">\n            <div class=\"settings-folder__icon\">\n                <svg height=\"57\" viewBox=\"0 0 58 57\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\">\n                <path d=\"M20 20.3735V45H26.8281V34.1262H36.724V26.9806H26.8281V24.3916C26.8281 21.5955 28.9062 19.835 31.1823 19.835H39V13H26.8281C23.6615 13 20 15.4854 20 20.3735Z\" fill=\"white\"/>\n                <rect x=\"2\" y=\"2\" width=\"54\" height=\"53\" rx=\"5\" stroke=\"white\" stroke-width=\"4\"/>\n                </svg>\n            </div>\n            <div class=\"settings-folder__name\">Filmix</div>\n        </div>");
-            Lampa.Settings.main().render().find('[data-component="more"]').after(field);
-            Lampa.Settings.main().update();
-        }
-    }
-
-    if (window.appready) addSettingsFilmix();else {
-        Lampa.Listener.follow('app', function (e) {
-            if (e.type == 'ready') addSettingsFilmix();
-        });
-    }
-    Lampa.Settings.listener.follow('open', function (e) {
-        if (e.name == 'filmix') {
-            e.body.find('[data-name="filmix_add"]').unbind('hover:enter').on('hover:enter', function () {
-                var user_code = '';
-                var user_token = '';
-                var modal = $('<div><div class="broadcast__text">' + Lampa.Lang.translate('filmix_modal_text') + '</div><div class="broadcast__device selector" style="text-align: center">' + Lampa.Lang.translate('filmix_modal_wait') + '...</div><br><div class="broadcast__scan"><div></div></div></div></div>');
-                Lampa.Modal.open({
-                    title: '',
-                    html: modal,
-                    onBack: function onBack() {
-                        Lampa.Modal.close();
-                        Lampa.Controller.toggle('settings_component');
-                        clearInterval(ping_auth);
-                    },
-                    onSelect: function onSelect() {
-                        Lampa.Utils.copyTextToClipboard(user_code, function () {
-                            Lampa.Noty.show(Lampa.Lang.translate('filmix_copy_secuses'));
-                        }, function () {
-                            Lampa.Noty.show(Lampa.Lang.translate('filmix_copy_fail'));
-                        });
-                    }
-                });
-                ping_auth = setInterval(function () {
-
-                }, 10000);
-                network.clear();
-                network.timeout(10000);
-                network.quiet(api_url + 'token_request' + user_dev, function (found) {
-                    if (found.status == 'ok') {
-                        user_token = found.code;
-                        user_code = found.user_code;
-                        modal.find('.selector').text(user_code); //modal.find('.broadcast__scan').remove()
-                    } else {
-                        Lampa.Noty.show(found);
-                    }
-                }, function (a, c) {
-                    Lampa.Noty.show(network.errorDecode(a, c));
-                });
-            });
-        }
-    });
 
 
 })();
