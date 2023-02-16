@@ -87,22 +87,11 @@
                         _this.wait_similars = true;
                         var similars = [];
 
-                        links2.forEach(function (l) {
-                            var item = $(l);
-
-                            var href = $(item).find('a.movie-title').attr('href');
-                            var title = $(item).find('a.movie-title').text();
-                            var info = $(item).find('.deck-value').text();
-                        });
-
-
                         links.forEach(function (l) {
                             var link = $(l),
                                 titl = link.attr('title') || link.text();
 
                             var year = $(l).parent().find('.deck-value').text();
-
-                            console.log( $(l).parent().text() );
 
                             year = parseInt(year);
 
