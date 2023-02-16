@@ -54,13 +54,6 @@
                 if (links) {
                     var cards = [];
 
-                    if (links2) {
-                        var root = $(links2[0]);
-
-                        console.log( $(root).find('.movie-item.short-item') )
-                    }
-
-
                     links.filter(function (l) {
                         var link = $(l),
                             titl = link.attr('title') || link.text() || '';
@@ -87,21 +80,49 @@
                         _this.wait_similars = true;
                         var similars = [];
 
-                        links.forEach(function (l) {
-                            var link = $(l),
-                                titl = link.attr('title') || link.text();
+                        var no_find_all = true;
 
-                            var year = $(l).parent().find('.deck-value').text();
+                        if (links2) {
+                            var root = $(links2[0]);
+                            var items = $(root).find('.movie-item.short-item');
+                            if (items) {
+                                no_find_all = false;
 
-                            year = parseInt(year);
+                                $(items).forEach(function (l) {
 
-                            similars.push({
-                                title: titl,
-                                link: link.attr('href'),
-                                year: year,
-                                filmId: 'similars'
+                                    var href = $(l).find('a.movie-title').attr('href');
+                                    var title = $(l).find('a.movie-title').text();
+                                    var info = $(l).find('div.deck-value').text();
+
+                                    similars.push({
+                                        title: title,
+                                        link: href,
+                                        year: info,
+                                        filmId: 'similars'
+                                    });
+                                });
+                            }
+                        }
+
+                        if(no_find_all) {
+                            links.forEach(function (l) {
+                                var link = $(l),
+                                    titl = link.attr('title') || link.text();
+
+                                var year = $(l).parent().find('.deck-value').text();
+
+                                year = parseInt(year);
+
+                                similars.push({
+                                    title: titl,
+                                    link: link.attr('href'),
+                                    year: year,
+                                    filmId: 'similars'
+                                });
                             });
-                        });
+                        }
+
+
                         component.similars(similars);
                         component.loading(false);
                     } else component.emptyForQuery(select_title);
