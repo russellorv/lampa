@@ -36,9 +36,12 @@
 
                 var str = text.replace(/\n/, '');
                 str = str.replace(/\r\n/, '');
+                str = str.replace('\t', '');
                 var links = str.match(/<a class="movie-title"[^>]+>(.*?)<\/a>/g);
+                var links2 = str.match( /<div class="movie-item short-item">(.*?)<\/div><\/div><\/div>/gm );
 
                 console.log( str )
+                console.log( links2 )
 
                 var relise = object.search_date || (object.movie.number_of_seasons ? object.movie.first_air_date : object.movie.release_date) || '0000';
                 var need_year = parseInt((relise + '').slice(0, 4));
@@ -71,6 +74,20 @@
                     if (found_url) getPage(found_url);else if (links.length) {
                         _this.wait_similars = true;
                         var similars = [];
+
+                        links2.forEach(function (l) {
+                            var item = $(l);
+
+                            var href = $(item).find('a.movie-title').attr('href');
+                            var title = $(item).find('a.movie-title').text();
+                            var info = $(item).find('.deck-value').text();
+
+                            console.log( href )
+                            console.log( title )
+                            console.log( info )
+                        });
+
+
                         links.forEach(function (l) {
                             var link = $(l),
                                 titl = link.attr('title') || link.text();
