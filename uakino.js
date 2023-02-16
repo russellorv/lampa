@@ -88,7 +88,7 @@
                             if (items) {
                                 no_find_all = false;
 
-                                $(items).forEach(function (l) {
+                                $(items).each(function (l) {
 
                                     var href = $(l).find('a.movie-title').attr('href');
                                     var title = $(l).find('a.movie-title').text();
