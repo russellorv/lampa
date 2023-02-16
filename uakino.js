@@ -56,9 +56,8 @@
 
                     if (links2) {
                         var root = $(links2[0]);
-                        $(root).find('.movie-item.short-item').forEach(function (l) {
-                            console.log( $(l).text() )
-                        });
+
+                        console.log( $(root).find('.movie-item.short-item') )
                     }
 
 
