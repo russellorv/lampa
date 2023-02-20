@@ -1,6 +1,6 @@
 // For uakino.club
 // blackenedd18@gmail.com
-// v.1.1
+// v.1.2
 
 (function () {
     'use strict';
@@ -734,9 +734,7 @@
         this.find = function () {
             var _this2 = this;
 
-            var url = this.proxy('videocdn') + 'http://cdn.svetacdn.in/api/short';
             var query = object.search;
-            url = Lampa.Utils.addUrlComponent(url, 'api_token=3i40G5TSECmLF77oAqnEgbx61ZWaOYaE');
 
             var display = function display(json) {
 
@@ -753,36 +751,7 @@
                 } else _this2.emptyForQuery(query);
             };
 
-            var pillow = function pillow(a, c) {
-                network.timeout(1000 * 15);
 
-                if (balanser !== 'videocdn') {
-                    network["native"]('https://kinopoiskapiunofficial.tech/api/v2.1/films/search-by-keyword?keyword=' + encodeURIComponent(query), function (json) {
-                        json.data = json.films;
-                        display(json);
-                    }, function (a, c) {
-                        _this2.empty(network.errorDecode(a, c));
-                    }, false, {
-                        headers: {
-                            'X-API-KEY': '2d55adfd-019d-4567-bbf7-67d503f61b5a'
-                        }
-                    });
-
-
-                } else {
-                    _this2.empty(network.errorDecode(a, c));
-                }
-            };
-
-            var letgo = function letgo(imdb_id) {
-                var url_end = Lampa.Utils.addUrlComponent(url, imdb_id ? 'imdb_id=' + encodeURIComponent(imdb_id) : 'title=' + encodeURIComponent(query));
-                network.timeout(1000 * 15);
-                network["native"](url_end, function (json) {
-                    if (json.data && json.data.length) display(json); else {
-                        network["native"](Lampa.Utils.addUrlComponent(url, 'title=' + encodeURIComponent(query)), display.bind(_this2), pillow.bind(_this2));
-                    }
-                }, pillow.bind(_this2));
-            };
 
             network.clear();
             network.timeout(1000 * 15);
@@ -793,21 +762,8 @@
                         title: object.movie.title || object.movie.name
                     }]
                 });
-            } else if (object.movie.kinopoisk_id && kiposk_sources.indexOf(balanser) >= 0) {
-                sources[balanser].search(object, object.movie.kinopoisk_id);
-            } else if (object.movie.imdb_id) {
-                letgo(object.movie.imdb_id);
-            } else if (object.movie.source == 'tmdb' || object.movie.source == 'cub') {
-                var tmdburl = (object.movie.name ? 'tv' : 'movie') + '/' + object.movie.id + '/external_ids?api_key=4ef0d7355d9ffb5151e987764708ce96&language=ru';
-                var baseurl = typeof Lampa.TMDB !== 'undefined' ? Lampa.TMDB.api(tmdburl) : 'http://api.themoviedb.org' + tmdburl;
-                network["native"](baseurl, function (ttid) {
-                    letgo(ttid.imdb_id);
-                }, function (a, c) {
-                    _this2.empty(network.errorDecode(a, c));
-                });
-            } else {
-                letgo();
             }
+
         };
 
         this.extendChoice = function () {
