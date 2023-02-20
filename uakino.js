@@ -90,12 +90,13 @@
 
                                     var href = $(this).find('a.movie-title').attr('href');
                                     var title = $(this).find('a.movie-title').text();
+                                    var full = $(this).find('div.full-season').text();
                                     var info = $(this).find('div.deck-value:eq(0), div.deck-value:eq(1), div.deck-value:eq(2)').text()
 
                                     similars.push({
                                         title: title,
                                         link: href,
-                                        year: info,
+                                        year: info + ' ' + full,
                                         filmId: 'similars'
                                     });
                                 });
