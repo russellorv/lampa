@@ -90,8 +90,13 @@
 
                                     var href = $(this).find('a.movie-title').attr('href');
                                     var title = $(this).find('a.movie-title').text();
-                                    var full = $(this).find('div.full-season').text();
+                                    var full = $(this).find('.full-season').text();
                                     var info = $(this).find('div.deck-value:eq(0), div.deck-value:eq(1), div.deck-value:eq(2)').text()
+
+                                    console.log( $(this).text() )
+                                    console.log( $(this).find('.movie-img').text() )
+                                    console.log(  '---' )
+                                    console.log(  '---' )
 
                                     similars.push({
                                         title: title,
