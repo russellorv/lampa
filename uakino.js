@@ -93,15 +93,10 @@
                                     var full = $(this).find('.full-season').text();
                                     var info = $(this).find('div.deck-value:eq(0), div.deck-value:eq(1), div.deck-value:eq(2)').text()
 
-
-                                    console.log( $(this).find('.movie-img').text() )
-                                    console.log(  '---' )
-
-
                                     similars.push({
                                         title: title,
                                         link: href,
-                                        year: info + ' ' + full,
+                                        year: info + ' | ' + full,
                                         filmId: 'similars'
                                     });
                                 });
@@ -744,12 +739,6 @@
             url = Lampa.Utils.addUrlComponent(url, 'api_token=3i40G5TSECmLF77oAqnEgbx61ZWaOYaE');
 
             var display = function display(json) {
-                if (object.movie.imdb_id) {
-                    var imdb = json.data.filter(function (elem) {
-                        return elem.imdb_id == object.movie.imdb_id;
-                    });
-                    if (imdb.length) json.data = imdb;
-                }
 
                 if (json.data && json.data.length) {
                     if (json.data.length == 1 || object.clarification) {
@@ -789,7 +778,7 @@
                 var url_end = Lampa.Utils.addUrlComponent(url, imdb_id ? 'imdb_id=' + encodeURIComponent(imdb_id) : 'title=' + encodeURIComponent(query));
                 network.timeout(1000 * 15);
                 network["native"](url_end, function (json) {
-                    if (json.data && json.data.length) display(json);else {
+                    if (json.data && json.data.length) display(json); else {
                         network["native"](Lampa.Utils.addUrlComponent(url, 'title=' + encodeURIComponent(query)), display.bind(_this2), pillow.bind(_this2));
                     }
                 }, pillow.bind(_this2));
