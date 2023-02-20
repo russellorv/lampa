@@ -648,8 +648,8 @@
             voice: Lampa.Lang.translate('torrent_parser_voice'),
             source: Lampa.Lang.translate('settings_rest_source')
         };
-        var filter_sources = ['uakino',];
-        var ignore_sources = [];
+        var filter_sources = ['uakino'];
+        var ignore_sources = ['uakino'];
         var kiposk_sources = []; // шаловливые ручки
 
         if (filter_sources.indexOf(balanser) == -1) {
