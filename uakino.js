@@ -93,10 +93,10 @@
                                     var full = $(this).find('.full-season').text();
                                     var info = $(this).find('div.deck-value:eq(0), div.deck-value:eq(1), div.deck-value:eq(2)').text()
 
-                                    console.log( $(this).text() )
+
                                     console.log( $(this).find('.movie-img').text() )
                                     console.log(  '---' )
-                                    console.log(  '---' )
+
 
                                     similars.push({
                                         title: title,
@@ -755,7 +755,7 @@
                     if (json.data.length == 1 || object.clarification) {
                         _this2.extendChoice();
 
-                        if (balanser == 'videocdn' ) sources[balanser].search(object, json.data);else sources[balanser].search(object, json.data[0].kp_id || json.data[0].filmId, json.data);
+                        sources[balanser].search(object, json.data[0].kp_id || json.data[0].filmId, json.data);
                     } else {
                         _this2.similars(json.data);
 
@@ -778,6 +778,8 @@
                             'X-API-KEY': '2d55adfd-019d-4567-bbf7-67d503f61b5a'
                         }
                     });
+
+
                 } else {
                     _this2.empty(network.errorDecode(a, c));
                 }
