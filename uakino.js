@@ -397,9 +397,9 @@
                                         found.push({
                                             file: find_video[1],
                                             stream: '',
-                                            title: find_video_title ? find_video_title[1] : ' | Show UA',
+                                            title: '',
                                             quality: '',
-                                            voice: 'UA',
+                                            voice: find_video_title ? find_video_title[1] : ' | Show UA',
                                             subtitles: false,
                                             subtitle: false,
                                             info: ' '
