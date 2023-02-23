@@ -300,9 +300,6 @@
                                 var voice = link.attr('data-voice') || '';
                                 var text = link.text() || '';
 
-                                console.log( voice )
-                                console.log( text )
-
                                 voice = voice.replace(']', ' ');
                                 voice = voice.replace('[', ' ');
 
