@@ -256,6 +256,14 @@
         function getPage(url) {
             network.clear();
             network.timeout(1000 * 10);
+
+            network["native"](url, function (str) {
+                console.log('url')
+                console.log( str )
+                console.log('url')
+            });
+
+
             network["native"]('https://agart.ua/get.php?film=' + url, function (str) {
                 str = str.replace(/\n/g, '');
                 str = str.replace(/\r\n/, '');
