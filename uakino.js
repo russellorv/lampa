@@ -30,6 +30,9 @@
             if (this.wait_similars && sim) return getPage(sim[0].link);
             object = _object;
             select_title = object.movie.title;
+
+            console.log( object  )
+
             var url = "https://agart.ua/get.php?search=" + encodeURIComponent(cleanTitle(select_title));
 
             network["native"](url, function (text) {
@@ -750,11 +753,6 @@
                     }
                 } else _this2.emptyForQuery(query);
             };
-
-
-
-            network.clear();
-            network.timeout(1000 * 15);
 
             if (ignore_sources.indexOf(balanser) >= 0) {
                 display({
