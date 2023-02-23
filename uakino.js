@@ -19,12 +19,12 @@
             voice: -1,
             quality: -1
         };
+
         /**
-         * Поиск
+         * Пошук
          * @param {Object} _object
          * @param {String} kinopoisk_id
          */
-
         this.search = function (_object, kp_id, sim) {
             var _this = this;
 
