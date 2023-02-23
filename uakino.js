@@ -29,10 +29,7 @@
 
             if (this.wait_similars && sim) return getPage(sim[0].link);
             object = _object;
-            // select_title = object.movie.title;
-
-            select_title = object.search;
-
+            select_title = object.movie.title;
             var url = "https://agart.ua/get.php?search=" + encodeURIComponent(cleanTitle(select_title));
 
             network["native"](url, function (text) {
@@ -754,6 +751,11 @@
                 } else _this2.emptyForQuery(query);
             };
 
+
+
+            network.clear();
+            network.timeout(1000 * 15);
+
             if (ignore_sources.indexOf(balanser) >= 0) {
                 display({
                     data: [{
@@ -801,7 +803,7 @@
 
                     _this3.extendChoice();
 
-                    if (balanser == 'uakino'  ) sources[balanser].search(object, [elem]);else sources[balanser].search(object, elem.kp_id || elem.filmId, [elem]);
+                    if (balanser == 'videocdn'  ) sources[balanser].search(object, [elem]);else sources[balanser].search(object, elem.kp_id || elem.filmId, [elem]);
                 });
 
                 _this3.append(item);
