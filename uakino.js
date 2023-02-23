@@ -399,7 +399,7 @@
                                             stream: '',
                                             title: '',
                                             quality: '',
-                                            voice: find_video_title ? find_video_title[1] : ' | Show UA',
+                                            voice: find_video_title ? find_video_title[1] : ' Show UA',
                                             subtitles: false,
                                             subtitle: false,
                                             info: ' '
