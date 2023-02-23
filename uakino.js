@@ -371,9 +371,9 @@
                                                         found.push({
                                                             file: _e.file,
                                                             stream: _e.file,
-                                                            title: _s.title + ' ' + _e.title,
+                                                            title: '',
                                                             quality: '',
-                                                            voice: _s.title,
+                                                            voice: _s.title + ' ' + _e.title,
                                                             subtitles: false,
                                                             subtitle: false,
                                                             info: ' '
