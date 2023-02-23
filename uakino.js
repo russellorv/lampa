@@ -311,7 +311,7 @@
                                     stream: '',
                                     title: voice + ' ' + text,
                                     quality: '',
-                                    voice: voice,
+                                    voice: voice + ' ' + text,
                                     subtitles: false,
                                     subtitle: false,
                                     info: ' '
