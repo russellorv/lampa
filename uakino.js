@@ -9,6 +9,7 @@
         var network = new Lampa.Reguest();
         var extract = {};
         var embed = component.proxy('uakino') + ''; //https://uakino.club/
+        var url_server = 'http://new.agart.ua/get.php';
         var object = _object;
         var select_title = '';
         var select_id = '';
@@ -31,7 +32,7 @@
             object = _object;
             select_title = object.movie.title;
             select_title = object.search;
-            var url = "https://new.agart.ua/get.php?search=" + encodeURIComponent(cleanTitle(select_title));
+            var url = url_server + "?search=" + encodeURIComponent(cleanTitle(select_title));
 
             network["native"](url, function (text) {
 
@@ -256,7 +257,7 @@
         function getPage(url) {
             network.clear();
             network.timeout(1000 * 10);
-            network["native"]('https://new.agart.ua/get.php?film=' + url, function (str) {
+            network["native"](  url_server + '?film=' + url, function (str) {
                 str = str.replace(/\n/g, '');
                 str = str.replace(/\r\n/, '');
 
@@ -276,7 +277,7 @@
 
 
 
-                    network["native"]('https://new.agart.ua/get.php?news_id=' + select_id, function (user_data) {
+                    network["native"](url_server + '?news_id=' + select_id, function (user_data) {
 
                         var find_series = user_data.match(/playlists-lists/g);
 
