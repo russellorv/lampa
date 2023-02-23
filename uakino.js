@@ -31,7 +31,7 @@
             object = _object;
             select_title = object.movie.title;
             select_title = object.search;
-            var url = "https://agart.ua/get.php?search=" + encodeURIComponent(cleanTitle(select_title));
+            var url = "https://new.agart.ua/get.php?search=" + encodeURIComponent(cleanTitle(select_title));
 
             network["native"](url, function (text) {
 
@@ -256,7 +256,7 @@
         function getPage(url) {
             network.clear();
             network.timeout(1000 * 10);
-            network["native"]('https://agart.ua/get.php?film=' + url, function (str) {
+            network["native"]('https://new.agart.ua/get.php?film=' + url, function (str) {
                 str = str.replace(/\n/g, '');
                 str = str.replace(/\r\n/, '');
 
@@ -276,7 +276,7 @@
 
 
 
-                    network["native"]('https://agart.ua/get.php?news_id=' + select_id, function (user_data) {
+                    network["native"]('https://new.agart.ua/get.php?news_id=' + select_id, function (user_data) {
 
                         var find_series = user_data.match(/playlists-lists/g);
 
