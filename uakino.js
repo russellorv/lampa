@@ -300,6 +300,9 @@
                                 var voice = link.attr('data-voice') || '';
                                 var text = link.text() || '';
 
+                                console.log( voice )
+                                console.log( text )
+
                                 found.push({
                                     file: file,
                                     stream: '',
