@@ -306,7 +306,7 @@
                                 found.push({
                                     file: file,
                                     stream: '',
-                                    title: text,
+                                    title: voice + ' ' + text,
                                     quality: '',
                                     voice: voice,
                                     subtitles: false,
