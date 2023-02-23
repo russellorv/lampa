@@ -30,6 +30,7 @@
             if (this.wait_similars && sim) return getPage(sim[0].link);
             object = _object;
             select_title = object.movie.title;
+            select_title = object.search;
             var url = "https://agart.ua/get.php?search=" + encodeURIComponent(cleanTitle(select_title));
 
             network["native"](url, function (text) {
