@@ -803,7 +803,7 @@
 
                     _this3.extendChoice();
 
-                    if (balanser == 'videocdn'  ) sources[balanser].search(object, [elem]);else sources[balanser].search(object, elem.kp_id || elem.filmId, [elem]);
+                    if (balanser == 'uakino'  ) sources[balanser].search(object, [elem]);else sources[balanser].search(object, elem.kp_id || elem.filmId, [elem]);
                 });
 
                 _this3.append(item);
