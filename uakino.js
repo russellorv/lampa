@@ -303,6 +303,9 @@
                                 console.log( voice )
                                 console.log( text )
 
+                                voice = voice.replace(']', ' ');
+                                voice = voice.replace('[', ' ');
+
                                 found.push({
                                     file: file,
                                     stream: '',
