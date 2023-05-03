@@ -51,8 +51,6 @@
                 var need_year = parseInt((relise + '').slice(0, 4));
                 var found_url = '';
 
-                console.log(links2);
-
                 if (links) {
                     var cards = [];
 
