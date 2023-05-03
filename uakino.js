@@ -30,15 +30,20 @@
 
             if (this.wait_similars && sim) return getPage(sim[0].link);
             object = _object;
-            select_title = object.movie.title;
             select_title = object.search;
             var url = url_server + "?search_json=" + encodeURIComponent(cleanTitle(select_title));
 
             network["native"](url, function (json) {
 
                 console.log(json);
-                console.log('----');
-                console.log(json.data);
+
+                if (json) {
+                    for(let item of json) {
+                        console.log(item);
+                    }
+                } else {
+                    component.emptyForQuery(select_title);
+                }
 
                 var str = text.replace(/\n/, '');
                 str = str.replace(/\r\n/, '');
@@ -80,7 +85,11 @@
                     });
                     if (!card && cards.length == 1) card = cards[0];
                     if (card) found_url = cards[0].link;
-                    if (found_url) getPage(found_url);else if (links.length) {
+
+
+                    if (found_url) getPage(found_url);
+
+                    else if (links.length) {
                         _this.wait_similars = true;
                         var similars = [];
 
@@ -132,6 +141,8 @@
                         component.loading(false);
                     } else component.emptyForQuery(select_title);
                 } else component.emptyForQuery(select_title);
+
+
             }, function (a, c) {
                 component.empty(network.errorDecode(a, c));
             }, false);
