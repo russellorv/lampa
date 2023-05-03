@@ -23,9 +23,121 @@
         /**
          * Пошук
          * @param {Object} _object
-         * @param {String} kinopoisk_id
+         * @param {String}
          */
         this.search = function (_object, kp_id, sim) {
+            var _this = this;
+
+            if (this.wait_similars && sim) return getPage(sim[0].link);
+            object = _object;
+            select_title = object.movie.title;
+            select_title = object.search;
+            var url = url_server + "?search_json=" + encodeURIComponent(cleanTitle(select_title));
+
+            network["native"](url, function (json) {
+
+                console.log(json);
+                console.log('----');
+                console.log(json.data);
+
+                var str = text.replace(/\n/, '');
+                str = str.replace(/\r\n/, '');
+                str = str.replace('parse', '');
+                str = str.replace('\t', '');
+                str = str.replace('\t\t', '');
+                str = str.replace('\t\t\t', '');
+                str = str.replace('\t\t\t\t', '');
+
+                var links = str.match(/<a class="movie-title"[^>]+>(.*?)<\/a>/g);
+                var links2 = str.match( /<div id=['|"]dle-content(.*?)<!-- підключаємо бокову колонку/ );
+
+                var relise = object.search_date || (object.movie.number_of_seasons ? object.movie.first_air_date : object.movie.release_date) || '0000';
+                var need_year = parseInt((relise + '').slice(0, 4));
+                var found_url = '';
+
+                if (links) {
+                    var cards = [];
+
+                    links.filter(function (l) {
+                        var link = $(l),
+                            titl = link.attr('title') || link.text() || '';
+                        var year = parseInt(titl.split('(').pop().slice(0, -1));
+
+                        year = $(link).parent().find('.deck-value').text();
+                        year = parseInt(year);
+
+                        if (year > need_year - 2 && year < need_year + 2) cards.push({
+                            year: year,
+                            title: titl.split(/\(\d{4}\)/)[0].trim(),
+                            link: link.attr('href')
+                        });
+                    });
+                    var card = cards.find(function (c) {
+                        return c.year == need_year;
+                    });
+                    if (!card) card = cards.find(function (c) {
+                        return c.title == select_title;
+                    });
+                    if (!card && cards.length == 1) card = cards[0];
+                    if (card) found_url = cards[0].link;
+                    if (found_url) getPage(found_url);else if (links.length) {
+                        _this.wait_similars = true;
+                        var similars = [];
+
+                        var no_find_all = true;
+
+                        if (links2) {
+                            var root = $(links2[0]);
+                            var items = $(root).find('.movie-item.short-item');
+                            if (items) {
+                                $(items).each(function () {
+
+                                    no_find_all = false;
+
+                                    var href = $(this).find('a.movie-title').attr('href');
+                                    var title = $(this).find('a.movie-title').text();
+                                    var full = $(this).find('.full-season').text();
+                                    var info = $(this).find('div.deck-value:eq(0), div.deck-value:eq(1), div.deck-value:eq(2)').text()
+
+                                    similars.push({
+                                        title: title,
+                                        link: href,
+                                        year: info + ' | ' + full,
+                                        filmId: 'similars'
+                                    });
+                                });
+                            }
+                        }
+
+                        if(no_find_all) {
+                            links.forEach(function (l) {
+                                var link = $(l),
+                                    titl = link.attr('title') || link.text();
+
+                                var year = $(l).parent().find('.deck-value').text();
+
+                                year = parseInt(year);
+
+                                similars.push({
+                                    title: titl,
+                                    link: link.attr('href'),
+                                    year: year,
+                                    filmId: 'similars'
+                                });
+                            });
+                        }
+
+
+                        component.similars(similars);
+                        component.loading(false);
+                    } else component.emptyForQuery(select_title);
+                } else component.emptyForQuery(select_title);
+            }, function (a, c) {
+                component.empty(network.errorDecode(a, c));
+            }, false);
+        };
+
+        this.search_old = function (_object, kp_id, sim) {
             var _this = this;
 
             if (this.wait_similars && sim) return getPage(sim[0].link);
