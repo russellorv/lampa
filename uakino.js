@@ -39,7 +39,7 @@
                         similars.push({
                             title: item.title,
                             link: item.href,
-                            year: item.imdb + ', ' + item.year + + ', ' + item.type + ' | ' + item.season,
+                            year: item.imdb + ', ' + item.year + ', ' + item.type + ' | ' + item.season,
                             filmId: 'similars'
                         });
                     }
