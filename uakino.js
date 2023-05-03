@@ -25,7 +25,7 @@
          * @param {Object} _object
          * @param {String}
          */
-        this.search = function (_object, id, sim) {
+        this.search = function (_object, filmId, sim) {
             var _this = this;
             if (this.wait_similars && sim) return getPage(sim[0].link);
             object = _object;
@@ -39,7 +39,7 @@
                         similars.push({
                             title: item.title,
                             link: item.href,
-                            year: item.imdb + ', ' + item.year + ' | ' + item.season,
+                            year: item.imdb + ', ' + item.year + + ', ' + item.type + ' | ' + item.season,
                             filmId: 'similars'
                         });
                     }
