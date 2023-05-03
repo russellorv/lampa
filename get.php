@@ -36,6 +36,28 @@ if (!empty($search)) {
 
     $result = str_replace(["\r\n", "\n"], '', $response);
     echo($result);
+
+    $query['from_page'] = '2';
+    $content = http_build_query($query);
+
+    curl_setopt($curl, CURLOPT_POST, true);
+    curl_setopt($curl, CURLOPT_POSTFIELDS, $content);
+    curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($curl, CURLOPT_HEADER, false);
+    curl_setopt($curl, CURLOPT_TIMEOUT, 30);
+    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
+
+    $response = curl_exec($curl);
+
+    if (curl_errno($curl)) {
+        print_r(curl_error($curl));
+        print_r(curl_errno($curl));
+    }
+
+    $result = str_replace(["\r\n", "\n"], '', $response);
+    echo($result);
+
+
     die();
 }
 
