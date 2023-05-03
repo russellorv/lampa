@@ -1,6 +1,6 @@
 // For uakino.club
 // blackenedd18@gmail.com
-// v.1.2
+// v.1.3
 
 (function () {
     'use strict';
