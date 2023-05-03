@@ -34,6 +34,7 @@
             network["native"](url, function (json) {
                 if (json) {
                     _this.wait_similars = true;
+                    var similars = [];
                     for(let item of json) {
                         similars.push({
                             title: item.title,
