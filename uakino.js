@@ -303,7 +303,13 @@
                     var find_video = str.match(/<link itemprop="video" value="(.*?)">/);
                     var find_video_title = str.match(/property="og:title" content="(.*?)"/);
 
-                    var find_h1_title = str.match(/<span\s+class="solototle"\s+itemprop="name">(.*?)<\/span>/);
+                    var matches_find_h1_title = str.match(/<span\s+class="solototle"\s+itemprop="name">(.*?)<\/span>/);
+
+                    if (matches_find_h1_title && matches_find_h1_title.length > 1) {
+                        var find_h1_title = matches_find_h1_title[1];
+                    } else {
+                        find_h1_title = '';
+                    }
 
                     console.log(find_h1_title);
                     console.log('h1');
