@@ -303,7 +303,7 @@
                     var find_video = str.match(/<link itemprop="video" value="(.*?)">/);
                     var find_video_title = str.match(/property="og:title" content="(.*?)"/);
 
-                    var find_h1_title = str.match(/<span class="solototle" itemprop="name">(.*?)<\/span>/);
+                    var find_h1_title = str.match(/<span\s+class="solototle"\s+itemprop="name">(.*?)<\/span>/);
 
                     console.log(find_h1_title);
                     console.log('h1');
