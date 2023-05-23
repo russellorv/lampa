@@ -533,7 +533,8 @@
             component.reset();
             var viewed = Lampa.Storage.cache('online_view', 5000, []);
             items.forEach(function (element, index) {
-                if (element.season) element.title = 'S' + element.season + ' / ' + element.title;
+                // if (element.season) element.title = 'S' + element.season + ' / ' + element.title;
+                if (element.season) element.title = '' + element.title;
                 if (element.voice) element.title = element.voice;
                 if (typeof element.episode == 'undefined') element.episode = index + 1;
                 var hash = Lampa.Utils.hash(element.season ? [element.season, element.episode, element.title].join('') : element.title + element.file);
