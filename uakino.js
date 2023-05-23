@@ -1,6 +1,6 @@
 // For uakino.club
 // blackenedd18@gmail.com
-// v.1.3
+// v.1.4
 
 (function () {
     'use strict';
@@ -306,7 +306,7 @@
                     var matches_find_h1_title = str.match(/<span\s+class="solototle"\s+itemprop="name">(.*?)<\/span>/);
 
                     if (matches_find_h1_title && matches_find_h1_title.length > 1) {
-                        var find_h1_title = matches_find_h1_title[1];
+                        var find_h1_title = matches_find_h1_title[1] + ' | ';
                     } else {
                         find_h1_title = '';
                     }
