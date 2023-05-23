@@ -311,10 +311,6 @@
                         find_h1_title = '';
                     }
 
-                    console.log(find_h1_title);
-                    console.log('h1');
-
-
                     network["native"](url_server + '?news_id=' + select_id, function (user_data) {
 
                         var find_series = user_data.match(/playlists-lists/g);
@@ -347,7 +343,7 @@
                                     stream: '',
                                     title: '',
                                     quality: '',
-                                    voice: voice + ' ' + text,
+                                    voice: find_h1_title + ' ' + voice + ' ' + text,
                                     subtitles: false,
                                     subtitle: false,
                                     info: ' '
@@ -412,7 +408,7 @@
                                                             stream: _e.file,
                                                             title: '',
                                                             quality: '',
-                                                            voice: _s.title + ' ' + _e.title,
+                                                            voice: find_h1_title + ' ' + _s.title + ' ' + _e.title,
                                                             subtitles: false,
                                                             subtitle: false,
                                                             info: ' '
@@ -436,9 +432,9 @@
                                         found.push({
                                             file: find_video[1],
                                             stream: '',
-                                            title: find_video_title ? find_video_title[1] : ' | Show UA',
+                                            title: find_h1_title + ' | Show UA',
                                             quality: '',
-                                            voice: 'Show UA',
+                                            voice: find_h1_title + ' || Show UA',
                                             subtitles: false,
                                             subtitle: false,
                                             info: ' '
