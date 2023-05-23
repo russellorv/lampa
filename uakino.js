@@ -338,6 +338,7 @@
                                 voice = voice.replace(']', ' ');
                                 voice = voice.replace('[', ' ');
 
+                                file = file.replace('https:', '');
                                 found.push({
                                     file: file,
                                     stream: '',
