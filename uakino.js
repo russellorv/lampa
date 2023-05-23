@@ -303,6 +303,10 @@
                     var find_video = str.match(/<link itemprop="video" value="(.*?)">/);
                     var find_video_title = str.match(/property="og:title" content="(.*?)"/);
 
+                    var find_h1_title = str.match(/itemprop="name">(.*?)<\/span>/);
+
+                    console.log(find_h1_title);
+                    console.log('h1');
 
 
                     network["native"](url_server + '?news_id=' + select_id, function (user_data) {
