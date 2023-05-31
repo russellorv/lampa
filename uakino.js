@@ -592,29 +592,29 @@
                                     getFile(elem);
 
                                     if (find_m3u8) {
-                                        playlist.push({
-                                            title: elem.title,
-                                            url: elem.stream,
-                                            timeline: elem.timeline,
-                                            subtitles: elem.subtitles,
-                                            quality: elem.qualitys
-                                        });
+                                        // playlist.push({
+                                        //     title: elem.title,
+                                        //     url: elem.stream,
+                                        //     timeline: elem.timeline,
+                                        //     subtitles: elem.subtitles,
+                                        //     quality: elem.qualitys
+                                        // });
                                     }
                                 });
                             } else {
                                 if (find_m3u8) {
-                                    playlist.push(first);
+                                    // playlist.push(first);
                                 }
                             }
 
                             if(find_m3u8) {
-                                if (playlist.length > 1) first.playlist = playlist;
+                                // if (playlist.length > 1) first.playlist = playlist;
                             }
 
                             Lampa.Player.play(first);
 
                             if(find_m3u8) {
-                                Lampa.Player.playlist(playlist);
+                                // Lampa.Player.playlist(playlist);
                             }
 
 
