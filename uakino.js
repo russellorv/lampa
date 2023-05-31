@@ -346,16 +346,21 @@
                                 console.log('find_tortuga');
                                 console.log(find_tortuga);
 
-                                found.push({
-                                    file: file,
-                                    stream: '',
-                                    title: '',
-                                    quality: '',
-                                    voice: find_h1_title + ' ' + voice + ' ' + text,
-                                    subtitles: false,
-                                    subtitle: false,
-                                    info: ' '
-                                });
+                                if (find_tortuga) {
+
+                                } else {
+                                    found.push({
+                                        file: file,
+                                        stream: '',
+                                        title: '',
+                                        quality: '',
+                                        voice: find_h1_title + ' ' + voice + ' ' + text,
+                                        subtitles: false,
+                                        subtitle: false,
+                                        info: ' '
+                                    });
+                                }
+
                             });
 
                             // found.reverse();
