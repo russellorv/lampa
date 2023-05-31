@@ -563,6 +563,10 @@
                     // network.timeout(1000 * 10);
                     network["native"](element.file, function (text) {
                         var source = text.match('file:"(.*?)"');
+
+                        console.log(  'source'  )
+                        console.log(  source  )
+
                         if (source) {
                             element.stream = source[1];
                         }
@@ -577,6 +581,7 @@
                         }
 
                         if (element.stream) {
+
                             var playlist = [];
                             var first = {
                                 url: element.stream,
