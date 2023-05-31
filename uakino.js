@@ -343,9 +343,6 @@
 
                                 var find_tortuga = file.match(/tortuga.wtf/);
 
-                                console.log('find_tortuga');
-                                console.log(find_tortuga);
-
                                 if (find_tortuga) {
 
                                 } else {
