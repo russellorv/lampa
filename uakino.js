@@ -341,6 +341,11 @@
                                 file = file.replace('https:', '');
                                 file = file.replace('http:', '');
 
+                                var find_tortuga = file.match(/tortuga.wtf/);
+
+                                console.log('find_tortuga');
+                                console.log(find_tortuga);
+
                                 found.push({
                                     file: file,
                                     stream: '',
@@ -563,10 +568,6 @@
                     // network.timeout(1000 * 10);
                     network["native"](element.file, function (text) {
                         var source = text.match('file:"(.*?)"');
-
-                        console.log(  'source'  )
-                        console.log(  source  )
-
                         if (source) {
                             element.stream = source[1];
                         }
@@ -581,7 +582,6 @@
                         }
 
                         if (element.stream) {
-
                             var playlist = [];
                             var first = {
                                 url: element.stream,
@@ -597,29 +597,29 @@
                                     getFile(elem);
 
                                     if (find_m3u8) {
-                                        // playlist.push({
-                                        //     title: elem.title,
-                                        //     url: elem.stream,
-                                        //     timeline: elem.timeline,
-                                        //     subtitles: elem.subtitles,
-                                        //     quality: elem.qualitys
-                                        // });
+                                        playlist.push({
+                                            title: elem.title,
+                                            url: elem.stream,
+                                            timeline: elem.timeline,
+                                            subtitles: elem.subtitles,
+                                            quality: elem.qualitys
+                                        });
                                     }
                                 });
                             } else {
                                 if (find_m3u8) {
-                                    // playlist.push(first);
+                                    playlist.push(first);
                                 }
                             }
 
                             if(find_m3u8) {
-                                // if (playlist.length > 1) first.playlist = playlist;
+                                if (playlist.length > 1) first.playlist = playlist;
                             }
 
                             Lampa.Player.play(first);
 
                             if(find_m3u8) {
-                                // Lampa.Player.playlist(playlist);
+                                Lampa.Player.playlist(playlist);
                             }
 
 
