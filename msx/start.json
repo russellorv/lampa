@@ -1,0 +1,26 @@
+{
+  "name": "russellorv.github.io",
+  "type": "list",
+  "headline": "X Media Station",
+  "version": "1.0.0",
+  "parameter": "content:https://russellorv.github.io/msx/start.json",
+  "action": "[settings:validate_links:0|home]",
+  "template": {
+    "type": "separate",
+    "layout": "0,0,2,3",
+    "color": "msx-glass"
+  },
+  "items": [
+
+    {
+      "title":"Media Start",
+      "image": "https://russellorv.github.io/favicon.ico",
+      "action": "link:https://russellorv.github.io"
+    },
+    {
+      "title":"Lampa",
+      "image": "https://lampa.mx/msx-logo.png",
+      "action": "link:https://lampa.mx"
+    }
+  ]
+}
